@@ -21,7 +21,10 @@ public class HealthBar : MonoBehaviour {
 	}
 	void Update () {
 		HPText.transform.position = gameObject.transform.position + new Vector3 (0, -2, 0);
-		health = gameObject.GetComponent<Stats> ().HP;
+		health = this.GetComponent<Stats> ().getHP ();
 		HPText.GetComponent<TextMesh> ().text = health.ToString ();
+		if (this.GetComponent<Stats> ().getHP () <= 0) {
+			HPText.SetActive (false);
+		}
 	}
 }

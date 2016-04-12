@@ -31,44 +31,62 @@ public class PlayerAttack : MonoBehaviour {
 			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			if(Physics.Raycast(ray, out hit)){
+				Debug.Log (hit.transform.tag);
 				if (hit.transform.tag == "Enemy") {
 					enemy = hit.collider.transform.parent.gameObject;
 					enemyClicked = true;
 					print ("I'm an enemy");
-				}
+				} 
 			}
 		}
 		if (enemyClicked) {
+			hitText.transform.position = enemy.transform.position + new Vector3 (0, 3, 0);
+			if (enemy.GetComponent<Stats> ().getHP () <= 0) {
+				hitText.SetActive (false);
+			}
+			if (enemy.GetComponent<Stats> ().getHP () <= 0) {
+				enemyClicked = false;
+				return;
+			}
 			float distance = Vector3.Distance (enemy.transform.position, transform.position);
-			damage = this.GetComponent<Stats> ().Attack - enemy.GetComponent<Stats> ().Defense;
+			if (Input.GetMouseButtonDown (0)) {
+				float toTarget = Vector2.Distance (enemy.transform.position,mainCamera.ScreenToWorldPoint(Input.mousePosition));
+				if (distance > this.GetComponent<Stats> ().getAttackRange()&& distance <= toTarget ) {
+					Debug.Log ("Distance: " + distance);
+					Debug.Log ("To Target: " + toTarget);
+					enemyClicked = false;
+					Debug.Log ("Enemy out of range");
+				}
+			}
+			damage = this.GetComponent<Stats> ().getAttack() - enemy.GetComponent<Stats> ().getDefense();
 			if (damage < 0) {
 				damage = 0;
 			}
-			if (distance <= this.GetComponent<Stats> ().AttackRange) {
-				attackSpeed = this.GetComponent<Stats> ().AttackSpeed;
-				if (enemy.GetComponent<Stats> ().HP > 0 && Time.time > nextAttack) {
-					if (UnityEngine.Random.value <= this.GetComponent<Stats> ().Accuracy) {
-						if (UnityEngine.Random.value <= this.GetComponent<Stats> ().critChance) {
+			if (distance <= this.GetComponent<Stats> ().getAttackRange()) {
+				attackSpeed = this.GetComponent<Stats> ().getAttackSpeed();
+				if (enemy.GetComponent<Stats> ().getHP() > 0 && Time.time > nextAttack) {
+					if (UnityEngine.Random.value <= this.GetComponent<Stats> ().getAccuracy()) {
+						if (UnityEngine.Random.value <= this.GetComponent<Stats> ().getCritChance()) {
 							damage = Crit (damage);
 						}
-						enemy.GetComponent<Stats> ().HP -= damage;
-						print (enemy.GetComponent<Stats> ().HP);
+						enemy.GetComponent<Stats> ().setHP (damage);
+						print (enemy.GetComponent<Stats> ().getHP());
 						hitText.GetComponent<TextMesh> ().text = damage.ToString ();
-						hitText.transform.position = enemy.transform.position + new Vector3(0,3,0);
+						hitText.transform.position = enemy.transform.position + new Vector3 (0, 3, 0);
 						color.a = 100;
 						hitText.GetComponent<TextMesh> ().color = color;
 					} else {
 						hitText.GetComponent<TextMesh> ().text = "Miss";
-						hitText.transform.position = enemy.transform.position + new Vector3(0,3,0);
+						hitText.transform.position = enemy.transform.position + new Vector3 (0, 3, 0);
 						color.a = 100;
 						hitText.GetComponent<TextMesh> ().color = color;
 					}
 					nextAttack = Time.time + 1 / attackSpeed;
 				}
-			}
+			} 
 		}
 	}
 	float Crit(float damage){
-		return damage * (1 + UnityEngine.Random.Range (this.GetComponent<Stats> ().critRangeLow, this.GetComponent<Stats> ().critRangeHigh));
+		return damage * (1 + UnityEngine.Random.Range (this.GetComponent<Stats> ().getCritRangeLow(), this.GetComponent<Stats> ().getCritRangeHigh()));
 	}
 }

@@ -79,6 +79,10 @@ public class Movement : MonoBehaviour
 			animator.SetInteger ("Direction", 4);
 			//lastState = 4;
 		}
+		if (coll.gameObject.tag == "Enemy") {
+			target = transform.position;
+			animator.SetInteger ("Direction", 4);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

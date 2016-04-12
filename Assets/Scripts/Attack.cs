@@ -33,14 +33,14 @@ public class Attack : MonoBehaviour {
 	void Update () {
 		hitText.transform.position = player.transform.position + textPos;
 		if (vision.getCanAttack ()) {
-			attackSpeed = this.GetComponent<Stats> ().AttackSpeed;
-			damage = this.GetComponent<Stats> ().Attack - player.GetComponent<Stats> ().Defense;
-			if (player.GetComponent<Stats> ().HP > 0 && Time.time > nextAttack) {
-				if (UnityEngine.Random.value <= this.GetComponent<Stats> ().Accuracy) {
-					if (UnityEngine.Random.value <= this.GetComponent<Stats> ().critChance) {
+			attackSpeed = this.GetComponent<Stats> ().getAttackSpeed();
+			damage = this.GetComponent<Stats> ().getAttack() - player.GetComponent<Stats> ().getDefense();
+			if (player.GetComponent<Stats> ().getHP() > 0 && Time.time > nextAttack) {
+				if (UnityEngine.Random.value <= this.GetComponent<Stats> ().getAccuracy()) {
+					if (UnityEngine.Random.value <= this.GetComponent<Stats> ().getCritChance()) {
 						damage = Crit (damage);
 					}
-					player.GetComponent<Stats> ().HP -= damage;
+					player.GetComponent<Stats> ().setHP (damage);
 					hitText.GetComponent<TextMesh> ().text = damage.ToString ();
 					hitText.transform.position = player.transform.position + textPos;
 					color.a = 100;
@@ -56,6 +56,6 @@ public class Attack : MonoBehaviour {
 		} 
 	}
 	float Crit(float damage){
-		return damage * (1 + UnityEngine.Random.Range (this.GetComponent<Stats> ().critRangeLow, this.GetComponent<Stats> ().critRangeHigh));
+		return damage * (1 + UnityEngine.Random.Range (this.GetComponent<Stats> ().getCritRangeLow(), this.GetComponent<Stats> ().getCritRangeHigh()));
 	}
 }
