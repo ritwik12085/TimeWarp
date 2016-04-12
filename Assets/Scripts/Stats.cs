@@ -5,7 +5,7 @@ using System.Threading;
 
 public class Stats : MonoBehaviour {
 
-	public float BaseHP;
+	public float CurrHP;
 	public float BaseDefense;
 	public float BaseAttack;
 	public float BaseAccuracy;
@@ -15,6 +15,7 @@ public class Stats : MonoBehaviour {
 	public float BaseCritChance;
 	public float BaseAttackRange;
 	public Text statsText;
+	private float MaxHP;
 	private float HP;
 	private float Defense;
 	private float Attack;
@@ -25,6 +26,7 @@ public class Stats : MonoBehaviour {
 	private float critChance;
 	private float AttackRange;
 	void Start(){
+		MaxHP = CurrHP;
 		UpdateStats (0,0,0,0,0,0,0,0,0);
 	}
 	void Update () {
@@ -38,7 +40,7 @@ public class Stats : MonoBehaviour {
 		}
 	}
 	public void UpdateStats(float HP, float Defense, float Attack, float Accuracy, float AttackSpeed, float critRangeLow, float critRangeHigh, float critChance, float AttackRange){
-		this.HP = HP + BaseHP;
+		this.HP = CurrHP;
 		this.Defense = Defense + BaseDefense;
 		this.Attack = Attack + BaseAttack;
 		this.Accuracy = Accuracy + BaseAccuracy;
@@ -47,11 +49,11 @@ public class Stats : MonoBehaviour {
 		this.critRangeHigh = critRangeHigh + BaseCritRangeHigh;
 		this.critChance = critChance + BaseCritChance;
 		this.AttackRange = AttackRange + BaseAttackRange;
-
+		this.MaxHP = MaxHP + HP; 
 		if(this.CompareTag ("Player")){
-			statsText.text = string.Format ("HP: {0}\nAttack: {1}\nDefense: {2}\nAccuracy: {3}\n" +
-				"Attack Speed: {4}\nAttack Range {5}\nCrit Damage: {6}-{7}\nCrit Change: {8}", 
-				this.HP, this.Attack, this.Defense, this.Accuracy, this.AttackSpeed, 
+			statsText.text = string.Format ("HP: {0}/{1}\nAttack: {2}\nDefense: {3}\nAccuracy: {4}\n" +
+				"Attack Speed: {5}\nAttack Range {6}\nCrit Damage: {7}-{8}\nCrit Change: {9}", 
+				this.HP, this.MaxHP, this.Attack, this.Defense, this.Accuracy, this.AttackSpeed, 
 				this.AttackRange, this.critRangeLow, this.critRangeHigh, this.critChance);
 		}
 	}
@@ -60,7 +62,7 @@ public class Stats : MonoBehaviour {
 		return this.HP;
 	}
 	public void setHP(float damage){
-		BaseHP -= damage;
+		CurrHP -= damage;
 		UpdateStats (0,0,0,0,0,0,0,0,0);
 	}
 	public float getAttack(){
@@ -86,5 +88,8 @@ public class Stats : MonoBehaviour {
 	}
 	public float getCritChance(){
 		return this.critChance;
+	}
+	public float getMaxHP(){
+		return this.MaxHP;
 	}
 }
