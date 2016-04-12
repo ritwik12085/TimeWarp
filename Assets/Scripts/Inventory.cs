@@ -7,6 +7,13 @@ using UnityEngine.EventSystems;
 public class Inventory : MonoBehaviour {
 
 	//Variables
+	private static CanvasGroup bagPanelGroup;
+
+	public static CanvasGroup BagPanelGroup
+	{
+		get { return Inventory.bagPanelGroup; }
+	}
+
 	private RectTransform inventoryRect;
 
 	private float inventoryWidth, inventoryHeight;
@@ -20,6 +27,10 @@ public class Inventory : MonoBehaviour {
 	private static Slot from, to;
 
 	private List<GameObject> allSlots;
+
+	public List<GameObject> AllSlots{
+		get { return allSlots; }
+	}
 
 	public GameObject iconPrefab;
 
@@ -46,6 +57,10 @@ public class Inventory : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		CreateLayout ();
+		//bagPanelGroup = this.GetComponent<CanvasGroup> ();
+		bagPanelGroup = transform.parent.GetComponent<CanvasGroup>();
+		bagPanelGroup.alpha = 0;
+		//bagPanelGroup.interactable = false;
 	}
 	
 	// Update is called once per frame
@@ -58,7 +73,7 @@ public class Inventory : MonoBehaviour {
 				Destroy (GameObject.Find ("Hover"));
 				to = null;
 				from = null;
-				hoverObject = null;
+				emptySlot++;
 			}
 		}
 
@@ -70,39 +85,40 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
-	private void CreateLayout()
+	public void CreateLayout()
 	{
-		allSlots = new List<GameObject> ();
 
-		hoverYOffset = slotSize * 0.01f;
+			allSlots = new List<GameObject> ();
 
-		emptySlot = slots;
+			hoverYOffset = slotSize * 0.01f;
 
-		inventoryWidth = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
-		inventoryHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
+			emptySlot = slots;
 
-		inventoryRect = GetComponent<RectTransform> ();
+			inventoryWidth = (slots / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
+			inventoryHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
 
-		inventoryRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, inventoryWidth);
-		inventoryRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, inventoryHeight);
+			inventoryRect = GetComponent<RectTransform> ();
 
-		int columns = slots / rows;
+			inventoryRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, inventoryWidth);
+			inventoryRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, inventoryHeight);
 
-		for(int y = 0; y < rows; y++)
-		{
-			for (int x = 0; x < columns; x++)
-			{
-				GameObject newSlot = (GameObject)Instantiate (slotPrefab);
-				RectTransform slotRect = newSlot.GetComponent<RectTransform> ();
-				newSlot.name = "Slot";
-				newSlot.transform.SetParent (this.transform.parent);
-				slotRect.localPosition = inventoryRect.localPosition + new Vector3 (slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingTop * (y + 1) - (slotSize * y));
-				slotRect.localScale = new Vector3(1, 1, 1);
-				slotRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, slotSize);
-				slotRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, slotSize);
-				allSlots.Add (newSlot);
+			int columns = slots / rows;
+
+			for (int y = 0; y < rows; y++) {
+				for (int x = 0; x < columns; x++) {
+					GameObject newSlot = (GameObject)Instantiate (slotPrefab);
+					RectTransform slotRect = newSlot.GetComponent<RectTransform> ();
+					newSlot.name = "Slot";
+					newSlot.transform.SetParent (this.transform.parent);
+					slotRect.localPosition = inventoryRect.localPosition + new Vector3 (slotPaddingLeft * (x + 1) + (slotSize * x), -slotPaddingTop * (y + 1) - (slotSize * y));
+					slotRect.localScale = new Vector3 (1, 1, 1);
+					slotRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, slotSize);
+					slotRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, slotSize);
+					newSlot.transform.SetParent (this.transform);
+					allSlots.Add (newSlot);
+				}
 			}
-		}
+			
 	}
 
 	public bool AddItem(Item item)
@@ -185,7 +201,17 @@ public class Inventory : MonoBehaviour {
 			from.GetComponent<Image>().color = Color.white;
 			to = null;
 			from = null;
-			hoverObject = null;
+			Destroy (GameObject.Find ("Hover"));
+		}
+	}
+
+	public void toggleTheBag(){
+		if (bagPanelGroup.alpha == 0) {
+			bagPanelGroup.alpha = 1;
+			bagPanelGroup.interactable = true;
+		} else if(!GameObject.Find("Hover")){
+			bagPanelGroup.alpha = 0;
+			bagPanelGroup.interactable = false;
 		}
 	}
 }

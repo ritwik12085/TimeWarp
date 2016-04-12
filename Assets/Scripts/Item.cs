@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {MANA, HEALTH};
+public enum ItemType {VINE, STONE, FIRE, WOOD, WATER, BOTTLE};
 
 public class Item : MonoBehaviour {
 
@@ -14,11 +14,23 @@ public class Item : MonoBehaviour {
 	public void Use()
 	{
 		switch (type) {
-		case ItemType.MANA:
-			Debug.Log ("I just used a mana potion.");
+		case ItemType.VINE:
+			//Debug.Log ("I just used a vine.");
 			break;
-		case ItemType.HEALTH:
-			Debug.Log ("I just used a health potion.");
+		case ItemType.STONE:
+			//Debug.Log ("I just used a stone.");
+			break;
+		case ItemType.FIRE:
+			//Debug.Log ("I just used fire.");
+			break;
+		case ItemType.WOOD:
+			//Debug.Log ("I just used some wood.");
+			break;
+		case ItemType.WATER:
+			//Debug.Log ("I just used water.");
+			break;
+		case ItemType.BOTTLE:
+			//Debug.Log ("I just used a bottle.");
 			break;
 		}
 	}

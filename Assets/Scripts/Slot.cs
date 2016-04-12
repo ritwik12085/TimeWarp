@@ -93,8 +93,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		}
 	}
 
+	public void decreaseFromCraft(int numberOfTimes){
+		for(int i = numberOfTimes; i > 0; i--){
+			UseItem ();
+		}
+	}
+
 	public void OnPointerClick(PointerEventData eventData){
-		if (eventData.button == PointerEventData.InputButton.Right) {
+		if (eventData.button == PointerEventData.InputButton.Right && !GameObject.Find("Hover") && Inventory.BagPanelGroup.alpha > 0) {
 			UseItem ();
 		}
 	}
