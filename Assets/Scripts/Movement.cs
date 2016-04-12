@@ -11,6 +11,14 @@ public class Movement : MonoBehaviour
 
 	public Inventory inventory;
 
+	public Vector3 GetTarget() {
+		return target;
+	}
+
+	public void SetTarget(Vector3 newTarget) {
+		target = newTarget;
+	}
+
 	void Start()
 	{
 		animator = this.GetComponent<Animator>();

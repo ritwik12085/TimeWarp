@@ -11,10 +11,13 @@ public class NPCController_Dave : MonoBehaviour {
 	private GameObject player;
 	private bool questInProgress;
 	private bool questComplete;
+	private Movement movementScript;
+	private bool clicked;
 
 	// Use this for initialization
 	void Start() {
 		player = GameObject.FindWithTag("Player");
+		movementScript = GetComponent<Movement>();
 		questInProgress = false;
 		questComplete = false;
 	}
@@ -23,9 +26,10 @@ public class NPCController_Dave : MonoBehaviour {
 		modalPanel = ModalPanel.Instance();
 	}
 
-	void OnMouseDown() {
-		if (!modalPanel.isActive()) { // only allow dialog if there is not already a dialog box open
-			if (((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude < minimumDistance && !modalPanel.isActive()) {
+	void Update() {
+		if (clicked) {
+			if (((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude < minimumDistance) {
+				movementScript.SetTarget(player.transform.position);
 				if (!questComplete && !questInProgress) {
 					// dialogController.TestYN("Would you like to start this quest?");
 					modalPanel.Choice("Would you like to start this quest?", AcceptQuest, DeclineQuest);
@@ -37,7 +41,16 @@ public class NPCController_Dave : MonoBehaviour {
 					// dialogController.TestOK("Thanks for completing my quest!");
 					modalPanel.Choice("Thanks for the help!");
 				}
+				clicked = false;
+			} else {
+				movementScript.SetTarget(this.transform.position);
 			}
+		}
+	}
+
+	void OnMouseDown() {
+		if (!modalPanel.isActive()) { // only allow dialog if there is not already a dialog box open
+			clicked = true;
 		}
 	}
 
