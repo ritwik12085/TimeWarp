@@ -5,23 +5,11 @@ public class PlayerAttack : MonoBehaviour {
 	private float attackSpeed;
 	private float damage;
 	private float nextAttack;
-	private GameObject hitText;
 	private Color color;
 	private Camera mainCamera;
 	private GameObject enemy;
 	private bool enemyClicked;
 	void Start () {
-		hitText = new GameObject ();
-		hitText.AddComponent<TextMesh> ();
-		hitText.GetComponent<TextMesh> ().anchor = TextAnchor.MiddleCenter;
-		hitText.GetComponent<TextMesh> ().fontSize = 100;
-		hitText.GetComponent<TextMesh> ().fontStyle = FontStyle.Bold;
-		hitText.transform.localScale = new Vector3(.05f,.05f,1f);
-		hitText.GetComponent<TextMesh> ().color = Color.red;
-		color = hitText.GetComponent<TextMesh> ().color;
-		color.a = 0;
-		hitText.GetComponent<TextMesh> ().color = color;
-		hitText.SetActive (true);
 		nextAttack = 0;
 		mainCamera = GetComponentInChildren<Camera> ();
 	}
@@ -40,10 +28,6 @@ public class PlayerAttack : MonoBehaviour {
 			}
 		}
 		if (enemyClicked) {
-			hitText.transform.position = enemy.transform.position + new Vector3 (0, 3, 0);
-			if (enemy.GetComponent<Stats> ().getHP () <= 0) {
-				hitText.SetActive (false);
-			}
 			if (enemy.GetComponent<Stats> ().getHP () <= 0) {
 				enemyClicked = false;
 				return;
@@ -70,16 +54,6 @@ public class PlayerAttack : MonoBehaviour {
 							damage = Crit (damage);
 						}
 						enemy.GetComponent<Stats> ().setHP (damage);
-						print (enemy.GetComponent<Stats> ().getHP());
-						hitText.GetComponent<TextMesh> ().text = damage.ToString ();
-						hitText.transform.position = enemy.transform.position + new Vector3 (0, 3, 0);
-						color.a = 100;
-						hitText.GetComponent<TextMesh> ().color = color;
-					} else {
-						hitText.GetComponent<TextMesh> ().text = "Miss";
-						hitText.transform.position = enemy.transform.position + new Vector3 (0, 3, 0);
-						color.a = 100;
-						hitText.GetComponent<TextMesh> ().color = color;
 					}
 					nextAttack = Time.time + 1 / attackSpeed;
 				}
