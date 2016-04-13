@@ -37,7 +37,7 @@ public class NPCController_Generic : MonoBehaviour {
 
 	void Update() {
 		if (clicked) {
-			if (((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude <= minimumDistance) {
+			if (((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude < minimumDistance) {
 				Talk();
 				clicked = false;
 			}
@@ -45,6 +45,7 @@ public class NPCController_Generic : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
+		Debug.Log(modalPanel);
 		if (!modalPanel.isActive()) { // only allow dialog if there is not already a dialog box open
 			if (!(((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude <= minimumDistance)) {
 				movementScript.SetTarget(this.transform.position);
@@ -58,6 +59,5 @@ public class NPCController_Generic : MonoBehaviour {
 	void Talk() {
 		movementScript.SetTarget(player.transform.position);
 		modalPanel.Choice(dialogLines[Random.Range(0, dialogLines.Length)]);
-
 	}
 }
