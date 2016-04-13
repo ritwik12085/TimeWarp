@@ -38,8 +38,7 @@ public class NPCController_Generic : MonoBehaviour {
 	void Update() {
 		if (clicked) {
 			if (((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude <= minimumDistance) {
-				movementScript.SetTarget(player.transform.position);
-				modalPanel.Choice(dialogLines[Random.Range(0, dialogLines.Length)]);
+				Talk();
 				clicked = false;
 			}
 		}
@@ -51,8 +50,14 @@ public class NPCController_Generic : MonoBehaviour {
 				movementScript.SetTarget(this.transform.position);
 				clicked = true;
 			} else {
-				modalPanel.Choice(dialogLines[Random.Range(0, dialogLines.Length)]);
+				Talk();
 			}
 		}
+	}
+
+	void Talk() {
+		movementScript.SetTarget(player.transform.position);
+		modalPanel.Choice(dialogLines[Random.Range(0, dialogLines.Length)]);
+
 	}
 }
