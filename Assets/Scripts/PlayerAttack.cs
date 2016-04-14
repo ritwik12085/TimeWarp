@@ -9,9 +9,11 @@ public class PlayerAttack : MonoBehaviour {
 	private Camera mainCamera;
 	private GameObject enemy;
 	private bool enemyClicked;
+    private Healing heal;
 	void Start () {
 		nextAttack = 0;
 		mainCamera = GetComponentInChildren<Camera> ();
+        heal = this.GetComponent<Healing>();
 	}
 
 	void Update () {
@@ -23,7 +25,6 @@ public class PlayerAttack : MonoBehaviour {
 				if (hit.transform.tag == "Enemy") {
 					enemy = hit.collider.transform.parent.gameObject;
 					enemyClicked = true;
-					print ("I'm an enemy");
 				} 
 			}
 		}
@@ -32,14 +33,13 @@ public class PlayerAttack : MonoBehaviour {
 				enemyClicked = false;
 				return;
 			}
+            heal.setTime(Time.time);
 			float distance = Vector3.Distance (enemy.transform.position, transform.position);
 			if (Input.GetMouseButtonDown (0)) {
 				float toTarget = Vector2.Distance (enemy.transform.position,mainCamera.ScreenToWorldPoint(Input.mousePosition));
-				if (distance > this.GetComponent<Stats> ().getAttackRange()&& distance <= toTarget ) {
-					Debug.Log ("Distance: " + distance);
-					Debug.Log ("To Target: " + toTarget);
-					enemyClicked = false;
-					Debug.Log ("Enemy out of range");
+				if(distance <= toTarget) {
+                    //if (distance > this.GetComponent<Stats> ().getAttackRange()&& distance <= toTarget ) {
+                    enemyClicked = false;
 				}
 			}
 			damage = this.GetComponent<Stats> ().getAttack() - enemy.GetComponent<Stats> ().getDefense();
@@ -63,4 +63,7 @@ public class PlayerAttack : MonoBehaviour {
 	float Crit(float damage){
 		return damage * (1 + UnityEngine.Random.Range (this.GetComponent<Stats> ().getCritRangeLow(), this.GetComponent<Stats> ().getCritRangeHigh()));
 	}
+    public bool getEnemyClicked(){
+        return enemyClicked;
+    }
 }
