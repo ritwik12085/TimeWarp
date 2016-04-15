@@ -14,6 +14,10 @@ public class Crafting : MonoBehaviour {
 		get { return Crafting.craftPanelGroup; }
 	}
 
+	public Canvas bottleMaterialsStatus;
+	public Canvas swordMaterialsStatus;
+	public Canvas hammerMaterialsStatus;
+
 	// Use this for initialization
 	void Start () {
 		craftPanelGroup = transform.parent.GetComponent<CanvasGroup>();
@@ -35,22 +39,28 @@ public class Crafting : MonoBehaviour {
 		}
 	}
 
-	public void SeeMaterialsNeeded(Canvas bottleMaterialsStatus){
-		if (bottleMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+	public void SeeMaterialsNeeded(Canvas selectCanvas){
+		if (selectCanvas.CompareTag("Bottle M Canvas") && bottleMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
 			CanvasGroup materialsPanelGroup = bottleMaterialsStatus.GetComponent<CanvasGroup> ();
 			materialsPanelGroup.alpha = 1;
 		} else {
 			CanvasGroup materialsPanelGroup = bottleMaterialsStatus.GetComponent<CanvasGroup> ();
 			materialsPanelGroup.alpha = 0;
 		}
-		/*if (Cclicked.CraftItems.ctype != CraftType.EMPTY) {
-			if(Cclicked.CraftItems.ctype == CraftType.BOTTLE){
-				Debug.Log ("I need 5 vines and 1 wood.");
-			}
+		if (selectCanvas.CompareTag("Sword M Canvas") && swordMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+			CanvasGroup materialsPanelGroup = swordMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 1;
 		} else {
-			Debug.Log ("No crafting item selected.");
+			CanvasGroup materialsPanelGroup = swordMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 0;
 		}
-		Cclicked = null;*/
+		if (selectCanvas.CompareTag("Hammer M Canvas") && hammerMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+			CanvasGroup materialsPanelGroup = hammerMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 1;
+		} else {
+			CanvasGroup materialsPanelGroup = hammerMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 0;
+		}
 	}
 		
 }
