@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum CraftType {BOTTLE, SWORD, HAMMER, EMPTY};
+public enum CraftType {BOTTLE, SWORD, HAMMER, HELMET, BOOT, ARMOR, EMPTY};
 
 public class CraftItem : MonoBehaviour {
 

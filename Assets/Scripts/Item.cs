@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {VINE, STONE, FIRE, WOOD, WATER, BOTTLE, SWORD, HAMMER};
+public enum ItemType {VINE, STONE, FIRE, WOOD, WATER, BOTTLE, SWORD, HAMMER, HELMET, BOOT, ARMOR};
 
 public class Item : MonoBehaviour {
 

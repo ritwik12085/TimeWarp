@@ -17,6 +17,9 @@ public class Crafting : MonoBehaviour {
 	public Canvas bottleMaterialsStatus;
 	public Canvas swordMaterialsStatus;
 	public Canvas hammerMaterialsStatus;
+	public Canvas helmetMaterialsStatus;
+	public Canvas bootMaterialsStatus;
+	public Canvas armorMaterialsStatus;
 
 	// Use this for initialization
 	void Start () {
@@ -59,6 +62,27 @@ public class Crafting : MonoBehaviour {
 			materialsPanelGroup.alpha = 1;
 		} else {
 			CanvasGroup materialsPanelGroup = hammerMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 0;
+		}
+		if (selectCanvas.CompareTag("Helmet M Canvas") && helmetMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+			CanvasGroup materialsPanelGroup = helmetMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 1;
+		} else {
+			CanvasGroup materialsPanelGroup = helmetMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 0;
+		}
+		if (selectCanvas.CompareTag("Boots M Canvas") && bootMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+			CanvasGroup materialsPanelGroup = bootMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 1;
+		} else {
+			CanvasGroup materialsPanelGroup = bootMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 0;
+		}
+		if (selectCanvas.CompareTag("Armor M Canvas") && armorMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+			CanvasGroup materialsPanelGroup = armorMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 1;
+		} else {
+			CanvasGroup materialsPanelGroup = armorMaterialsStatus.GetComponent<CanvasGroup> ();
 			materialsPanelGroup.alpha = 0;
 		}
 	}
