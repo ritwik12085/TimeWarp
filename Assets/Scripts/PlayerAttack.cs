@@ -21,7 +21,6 @@ public class PlayerAttack : MonoBehaviour {
 			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			if(Physics.Raycast(ray, out hit)){
-				Debug.Log (hit.transform.tag);
 				if (hit.transform.tag == "Enemy") {
 					enemy = hit.collider.transform.parent.gameObject;
 					enemyClicked = true;

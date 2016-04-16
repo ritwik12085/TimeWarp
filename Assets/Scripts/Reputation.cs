@@ -9,8 +9,6 @@ public class Reputation : MonoBehaviour {
         reputation = 50;
 	}
     void Update(){
-        Debug.Log(reputation);
-        Debug.Log(repStatus);
         if (reputation <= 33){
             repStatus = 0;
         }
