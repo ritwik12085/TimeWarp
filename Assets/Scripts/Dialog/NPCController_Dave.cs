@@ -31,8 +31,6 @@ public class NPCController_Dave : MonoBehaviour {
 			if (((Vector2)player.transform.position - (Vector2)this.transform.position).sqrMagnitude < minimumDistance) {
 				Talk();
 				clicked = false;
-			} else {
-				movementScript.SetTarget(this.transform.position);
 			}
 		}
 	}
