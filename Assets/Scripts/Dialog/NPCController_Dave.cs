@@ -9,8 +9,8 @@ public class NPCController_Dave : MonoBehaviour {
 	private ModalPanel modalPanel;
 	private string[] dialogLines;
 	private GameObject player;
-	private bool questInProgress;
-	private bool questComplete;
+	public bool questInProgress;
+	public bool questComplete;
 	private Movement movementScript;
 	private bool clicked;
     public QuestTracker quest;
@@ -60,10 +60,10 @@ public class NPCController_Dave : MonoBehaviour {
 				clicked = false;
 			}
 		}
-        if(quest.ActiveQuest && quest.QuestComplete)
+        if(quest.ActiveQuest && quest.QuestComplete && quest.questID == questID)
         {
             quest.ActiveQuest = false;
-            questComplete = quest.QuestComplete;
+            questComplete = true;
         }
 	}
 
@@ -80,7 +80,7 @@ public class NPCController_Dave : MonoBehaviour {
 
 	void Talk() {
 		movementScript.SetTarget(player.transform.position);
-        if(quest.questID  == 0)
+        if (quest.questID == 0 || quest.questID == questID) 
         {
             if (!questComplete && !questInProgress)
             {
@@ -107,13 +107,17 @@ public class NPCController_Dave : MonoBehaviour {
                     questInProgress = false;
                     questComplete = false;
                     quest.QuestComplete = questComplete;
+                    quest.questID = 0;
+                    quest.count = 0;
                 }
                 else
                 {
-                    modalPanel.Choice(" Thanks for all the " + item + "s! I can finally get back to work!\nAllow me to show my appreciation. Take this.");
+                    modalPanel.Choice("Thanks for all the " + item + "s! I can finally get back to work!\nAllow me to show my appreciation. Take this.");
                     questInProgress = false;
                     questComplete = false;
                     quest.QuestComplete = questComplete;
+                    quest.questID = 0;
+                    quest.count = 0;
                 }
             }
         }
@@ -128,7 +132,7 @@ public class NPCController_Dave : MonoBehaviour {
         quest.type = questType;
         quest.goal = questGoal;
         quest.ActiveQuest = questInProgress;
-        quest.QuestComplete = false;
+        quest.QuestComplete = questComplete;
         quest.questID = questID;
         if (questType == "Collect Quest")
         {
