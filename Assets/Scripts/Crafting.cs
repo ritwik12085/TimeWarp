@@ -20,9 +20,20 @@ public class Crafting : MonoBehaviour {
 	public Canvas helmetMaterialsStatus;
 	public Canvas bootMaterialsStatus;
 	public Canvas armorMaterialsStatus;
+	public Canvas shipPart1MaterialsStatus;
+
+	private static GameObject ctooltip;
+	public GameObject ctooltipObject;
+	private static Text csizeText;
+	public Text csizeTextObject;
+	private static Text cvisualText;
+	public Text cvisualTextObject;
 
 	// Use this for initialization
 	void Start () {
+		ctooltip = ctooltipObject;
+		csizeText = csizeTextObject;
+		cvisualText = cvisualTextObject;
 		craftPanelGroup = transform.parent.GetComponent<CanvasGroup>();
 		craftPanelGroup.alpha = 0;
 	}
@@ -30,6 +41,26 @@ public class Crafting : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void showToolTip(GameObject slot){
+		CraftSlot tmpSlot = slot.GetComponent<CraftSlot> ();
+
+		if(tmpSlot.CraftItems.ctype != CraftType.EMPTY){
+			cvisualText.text = tmpSlot.CraftItems.cGetTooltip ();
+			csizeText.text = cvisualText.text;
+
+			Vector3 slotPos = slot.transform.position;
+			slotPos.y = slotPos.y + 1;
+			ctooltip.transform.position = slotPos;
+
+			ctooltip.SetActive (true);
+		}
+
+	}
+
+	public void hideToolTip(){
+		ctooltip.SetActive (false);
 	}
 
 	public void toggleTheCraft(){
@@ -83,6 +114,13 @@ public class Crafting : MonoBehaviour {
 			materialsPanelGroup.alpha = 1;
 		} else {
 			CanvasGroup materialsPanelGroup = armorMaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 0;
+		}
+		if (selectCanvas.CompareTag("Ship Part 1 M Canvas") && shipPart1MaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
+			CanvasGroup materialsPanelGroup = shipPart1MaterialsStatus.GetComponent<CanvasGroup> ();
+			materialsPanelGroup.alpha = 1;
+		} else {
+			CanvasGroup materialsPanelGroup = shipPart1MaterialsStatus.GetComponent<CanvasGroup> ();
 			materialsPanelGroup.alpha = 0;
 		}
 	}
