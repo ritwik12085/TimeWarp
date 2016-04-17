@@ -1,0 +1,530 @@
+fileFormatVersion: 2
+guid: 31981057465a2ab4da8ff1a9dc0148e5
+timeCreated: 1460721350
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: enemyType1moving_0
+    21300002: enemyType1moving_1
+    21300004: enemyType1moving_2
+    21300006: enemyType1moving_3
+    21300008: enemyType1moving_4
+    21300010: enemyType1moving_5
+    21300012: enemyType1moving_6
+    21300014: enemyType1moving_7
+    21300016: enemyType1moving_8
+    21300018: enemyType1moving_9
+    21300020: enemyType1moving_10
+    21300022: enemyType1moving_11
+    21300024: enemyType1moving_12
+    21300026: enemyType1moving_13
+    21300028: enemyType1moving_14
+    21300030: enemyType1moving_15
+    21300032: enemyType1moving_16
+    21300034: enemyType1moving_17
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: enemyType1moving_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 112, y: 55}
+        - {x: 102, y: 59}
+        - {x: 100, y: 91}
+        - {x: 98, y: 93}
+        - {x: 58, y: 107}
+        - {x: -48, y: 107}
+        - {x: -100, y: 100}
+        - {x: -100, y: 65}
+        - {x: -79, y: 15}
+        - {x: -100, y: -37}
+        - {x: -100, y: -107}
+        - {x: -98, y: -112}
+        - {x: 91, y: -112}
+        - {x: 104, y: -100}
+        - {x: 112, y: 1}
+    - name: enemyType1moving_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 112, y: 55}
+        - {x: 102, y: 59}
+        - {x: 100, y: 91}
+        - {x: 98, y: 93}
+        - {x: 58, y: 107}
+        - {x: -48, y: 107}
+        - {x: -100, y: 100}
+        - {x: -100, y: 65}
+        - {x: -79, y: 15}
+        - {x: -100, y: -37}
+        - {x: -100, y: -107}
+        - {x: -98, y: -112}
+        - {x: 91, y: -112}
+        - {x: 104, y: -100}
+        - {x: 112, y: 1}
+    - name: enemyType1moving_2
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 74, y: 50}
+        - {x: 68, y: 35}
+        - {x: 61, y: 28}
+        - {x: 65, y: 35}
+        - {x: 81, y: 62}
+        - {x: 97, y: 73}
+        - {x: 100, y: 77}
+        - {x: 100, y: 103}
+        - {x: 72, y: 107}
+        - {x: -100, y: 107}
+        - {x: -100, y: -112}
+        - {x: 100, y: -112}
+        - {x: 100, y: 59}
+        - {x: 83, y: 60}
+    - name: enemyType1moving_3
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 89, y: 23}
+        - {x: 100, y: 70}
+        - {x: 100, y: 95}
+        - {x: 52, y: 107}
+        - {x: -47, y: 107}
+        - {x: -100, y: 94}
+        - {x: -100, y: 83}
+        - {x: -77, y: 14}
+        - {x: -100, y: -57}
+        - {x: -100, y: -98}
+        - {x: -98, y: -100}
+        - {x: 96, y: -100}
+        - {x: 100, y: -98}
+        - {x: 100, y: -17}
+    - name: enemyType1moving_4
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: 107}
+        - {x: -100, y: 97}
+        - {x: -100, y: 79}
+        - {x: -79, y: 57}
+        - {x: -72, y: 61}
+        - {x: -73, y: 48}
+        - {x: -65, y: 35}
+        - {x: -63, y: 33}
+        - {x: -67, y: 36}
+        - {x: -74, y: 38}
+        - {x: -74, y: 50}
+        - {x: -83, y: 60}
+        - {x: -100, y: 71}
+        - {x: -100, y: -112}
+        - {x: 89, y: -112}
+        - {x: 100, y: -109}
+        - {x: 100, y: 94}
+        - {x: 66, y: 107}
+    - name: enemyType1moving_5
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 84}
+        - {x: 100, y: 91}
+        - {x: 98, y: 93}
+        - {x: 49, y: 107}
+        - {x: -47, y: 107}
+        - {x: -103, y: 93}
+        - {x: -112, y: 90}
+        - {x: -112, y: -112}
+        - {x: 100, y: -112}
+        - {x: 100, y: -44}
+        - {x: 77, y: 16}
+    - name: enemyType1moving_6
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -44, y: 107}
+        - {x: -100, y: 97}
+        - {x: -100, y: 79}
+        - {x: -79, y: 57}
+        - {x: -72, y: 61}
+        - {x: -73, y: 48}
+        - {x: -65, y: 35}
+        - {x: -63, y: 33}
+        - {x: -67, y: 36}
+        - {x: -74, y: 38}
+        - {x: -74, y: 50}
+        - {x: -83, y: 60}
+        - {x: -100, y: 71}
+        - {x: -100, y: -112}
+        - {x: 89, y: -112}
+        - {x: 100, y: -109}
+        - {x: 100, y: 94}
+        - {x: 66, y: 107}
+    - name: enemyType1moving_7
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 89, y: 23}
+        - {x: 100, y: 70}
+        - {x: 100, y: 95}
+        - {x: 52, y: 107}
+        - {x: -47, y: 107}
+        - {x: -100, y: 94}
+        - {x: -100, y: 83}
+        - {x: -77, y: 14}
+        - {x: -100, y: -57}
+        - {x: -100, y: -98}
+        - {x: -98, y: -100}
+        - {x: 96, y: -100}
+        - {x: 100, y: -98}
+        - {x: 100, y: -17}
+    - name: enemyType1moving_8
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 224
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 74, y: 50}
+        - {x: 68, y: 35}
+        - {x: 61, y: 28}
+        - {x: 65, y: 35}
+        - {x: 81, y: 62}
+        - {x: 97, y: 73}
+        - {x: 100, y: 77}
+        - {x: 100, y: 103}
+        - {x: 72, y: 107}
+        - {x: -100, y: 107}
+        - {x: -100, y: -112}
+        - {x: 100, y: -112}
+        - {x: 100, y: 59}
+        - {x: 83, y: 60}
+    - name: enemyType1moving_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 92}
+        - {x: 98, y: 93}
+        - {x: 49, y: 107}
+        - {x: -47, y: 107}
+        - {x: -100, y: 98}
+        - {x: -100, y: 58}
+        - {x: -77, y: -30}
+        - {x: -93, y: -101}
+        - {x: -79, y: -112}
+        - {x: 74, y: -112}
+        - {x: 86, y: -98}
+        - {x: 98, y: -75}
+        - {x: 100, y: -54}
+    - name: enemyType1moving_10
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 92}
+        - {x: 98, y: 93}
+        - {x: 49, y: 107}
+        - {x: -47, y: 107}
+        - {x: -100, y: 98}
+        - {x: -100, y: 58}
+        - {x: -77, y: -30}
+        - {x: -93, y: -101}
+        - {x: -79, y: -112}
+        - {x: 74, y: -112}
+        - {x: 86, y: -98}
+        - {x: 98, y: -75}
+        - {x: 100, y: -54}
+    - name: enemyType1moving_11
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 83}
+        - {x: 100, y: 93}
+        - {x: 60, y: 107}
+        - {x: -49, y: 107}
+        - {x: -100, y: 100}
+        - {x: -100, y: 65}
+        - {x: -92, y: 44}
+        - {x: -78, y: -31}
+        - {x: -85, y: -100}
+        - {x: -69, y: -112}
+        - {x: 65, y: -112}
+        - {x: 79, y: -98}
+        - {x: 82, y: -75}
+        - {x: 89, y: 26}
+    - name: enemyType1moving_12
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 84}
+        - {x: 100, y: 100}
+        - {x: 47, y: 107}
+        - {x: -64, y: 107}
+        - {x: -100, y: 97}
+        - {x: -100, y: 6}
+        - {x: -96, y: -61}
+        - {x: -78, y: -97}
+        - {x: -63, y: -100}
+        - {x: 63, y: -100}
+        - {x: 83, y: -89}
+        - {x: 80, y: -49}
+        - {x: 83, y: 24}
+    - name: enemyType1moving_13
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 83}
+        - {x: 100, y: 93}
+        - {x: 60, y: 107}
+        - {x: -49, y: 107}
+        - {x: -100, y: 100}
+        - {x: -100, y: 65}
+        - {x: -92, y: 44}
+        - {x: -78, y: -31}
+        - {x: -85, y: -100}
+        - {x: -69, y: -112}
+        - {x: 65, y: -112}
+        - {x: 79, y: -98}
+        - {x: 82, y: -75}
+        - {x: 89, y: 26}
+    - name: enemyType1moving_14
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 92}
+        - {x: 98, y: 93}
+        - {x: 49, y: 107}
+        - {x: -47, y: 107}
+        - {x: -100, y: 98}
+        - {x: -100, y: 58}
+        - {x: -77, y: -30}
+        - {x: -93, y: -101}
+        - {x: -79, y: -112}
+        - {x: 74, y: -112}
+        - {x: 86, y: -98}
+        - {x: 98, y: -75}
+        - {x: 100, y: -54}
+    - name: enemyType1moving_15
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 83}
+        - {x: 100, y: 93}
+        - {x: 60, y: 107}
+        - {x: -49, y: 107}
+        - {x: -100, y: 100}
+        - {x: -100, y: 65}
+        - {x: -92, y: 44}
+        - {x: -78, y: -31}
+        - {x: -85, y: -100}
+        - {x: -69, y: -112}
+        - {x: 65, y: -112}
+        - {x: 79, y: -98}
+        - {x: 82, y: -75}
+        - {x: 89, y: 26}
+    - name: enemyType1moving_16
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75, y: 56}
+        - {x: 85, y: 67}
+        - {x: 96, y: 74}
+        - {x: 100, y: 84}
+        - {x: 100, y: 95}
+        - {x: 64, y: 107}
+        - {x: -53, y: 107}
+        - {x: -100, y: 101}
+        - {x: -100, y: -15}
+        - {x: -94, y: -61}
+        - {x: -78, y: -97}
+        - {x: -70, y: -100}
+        - {x: 63, y: -100}
+        - {x: 100, y: -99}
+        - {x: 100, y: 67}
+        - {x: 77, y: 58}
+    - name: enemyType1moving_17
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 0
+        width: 224
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 100, y: 83}
+        - {x: 100, y: 93}
+        - {x: 60, y: 107}
+        - {x: -49, y: 107}
+        - {x: -100, y: 100}
+        - {x: -100, y: 65}
+        - {x: -92, y: 44}
+        - {x: -78, y: -31}
+        - {x: -85, y: -100}
+        - {x: -69, y: -112}
+        - {x: 65, y: -112}
+        - {x: 79, y: -98}
+        - {x: 82, y: -75}
+        - {x: 89, y: 26}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

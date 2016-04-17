@@ -19,10 +19,21 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 	private bool bottleVines;
 	private bool bottleWood;
-
-	//materials text for bottle
-	public Text tVines;
-	public Text tWood;
+	private bool swordStone;
+	private bool swordWood;
+	private bool swordFire;
+	private bool hammerStone;
+	private bool hammerWood;
+	private bool hammerFire;
+	private bool helmetFire;
+	private bool helmetStone;
+	private bool helmetVines;
+	private bool bootVines;
+	private bool bootWood;
+	private bool bootWater;
+	private bool armorVines;
+	private bool armorStone;
+	private bool armorFire;
 
 	// Use this for initialization
 	void Start () {
@@ -31,47 +42,147 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	
 	// Update is called once per frame
 	void Update () {
-		int vineInBag = 0;
-		int woodInBag = 0;
 		foreach (GameObject slot in theBag.AllSlots) {
 			Slot stmp = slot.GetComponent<Slot> ();
 
-			if(!stmp.IsEmpty){
-				if (stmp.CurrentItem.type == ItemType.VINE && stmp.Items.Count > 0) {
-					vineInBag = vineInBag + stmp.Items.Count;
-					if (vineInBag >= 5) {
+			if (!stmp.IsEmpty) {
+				if (stmp.CurrentItem.type == ItemType.VINE /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 5) {
 						bottleVines = true;
 					} else {
 						bottleVines = false;
 					}
-				} else if (stmp.CurrentItem.type == ItemType.WOOD && stmp.Items.Count > 0) {
-					woodInBag = woodInBag + stmp.Items.Count;
-					if (woodInBag >= 1) {
+					if (stmp.Items.Count >= 5) {
+						helmetVines = true;
+					} else {
+						helmetVines = false;
+					}
+					if (stmp.Items.Count >= 5) {
+						bootVines = true;
+					} else {
+						bootVines = false;
+					}
+					if (stmp.Items.Count >= 5) {
+						armorVines = true;
+					} else {
+						armorVines = false;
+					}
+				} else if (stmp.CurrentItem.type == ItemType.WOOD /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 1) {
 						bottleWood = true;
 					} else {
 						bottleWood = false;
 					}
+					if (stmp.Items.Count >= 5) {
+						swordWood = true;
+					} else {
+						swordWood = false;
+					}
+					if (stmp.Items.Count >= 15) {
+						hammerWood = true;
+					} else {
+						hammerWood = false;
+					}
+					if (stmp.Items.Count >= 5) {
+						bootWood = true;
+					} else {
+						bootWood = false;
+					}
+				} else if (stmp.CurrentItem.type == ItemType.STONE /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 10) {
+						swordStone = true;
+					} else {
+						swordStone = false;
+					}
+					if (stmp.Items.Count >= 15) {
+						hammerStone = true;
+					} else {
+						hammerStone = false;
+					}
+					if (stmp.Items.Count >= 5) {
+						helmetStone = true;
+					} else {
+						helmetStone = false;
+					}
+					if (stmp.Items.Count >= 5) {
+						armorStone = true;
+					} else {
+						armorStone = false;
+					}
+				} else if (stmp.CurrentItem.type == ItemType.FIRE /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 1) {
+						swordFire = true;
+					} else {
+						swordFire = false;
+					}
+					if (stmp.Items.Count >= 2) {
+						hammerFire = true;
+					} else {
+						hammerFire = false;
+					}
+					if (stmp.Items.Count >= 2) {
+						helmetFire = true;
+					} else {
+						helmetFire = false;
+					}
+					if (stmp.Items.Count >= 1) {
+						armorFire = true;
+					} else {
+						armorFire = false;
+					}
+				} else if (stmp.CurrentItem.type == ItemType.WATER /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 1) {
+						bootWater = true;
+					} else {
+						bootWater = false;
+					}
 				}
 			}
 		}
-		if(craftItems.ctype == CraftType.BOTTLE){
-			if (bottleWood == true) {
-				tWood.color = Color.green;
-			} else {
-				tWood.color = Color.white;
-			}
-			if(bottleVines == true){
-				tVines.color = Color.green;
-			} else {
-				tVines.color = Color.white;
-			}
 
+		if(craftItems.ctype == CraftType.BOTTLE){
 			if (bottleWood == true && bottleVines == true) {
 				GetComponent<Image> ().color = Color.white;
 			} else {
 				GetComponent<Image> ().color = Color.gray;
 			}
 		}
+		if(craftItems.ctype == CraftType.SWORD){
+			if (swordWood == true && swordFire == true && swordStone==true) {
+				GetComponent<Image> ().color = Color.white;
+			} else {
+				GetComponent<Image> ().color = Color.gray;
+			}
+		}
+		if(craftItems.ctype == CraftType.HAMMER){
+			if (hammerWood == true && hammerFire == true && hammerStone==true) {
+				GetComponent<Image> ().color = Color.white;
+			} else {
+				GetComponent<Image> ().color = Color.gray;
+			}
+		}
+		if(craftItems.ctype == CraftType.HELMET){
+			if (helmetVines == true && helmetFire == true && helmetStone==true) {
+				GetComponent<Image> ().color = Color.white;
+			} else {
+				GetComponent<Image> ().color = Color.gray;
+			}
+		}
+		if(craftItems.ctype == CraftType.BOOT){
+			if (bootVines == true && bootWater == true && bootWood ==true) {
+				GetComponent<Image> ().color = Color.white;
+			} else {
+				GetComponent<Image> ().color = Color.gray;
+			}
+		}
+		if(craftItems.ctype == CraftType.ARMOR){
+			if (armorVines == true && armorFire == true && armorStone ==true) {
+				GetComponent<Image> ().color = Color.white;
+			} else {
+				GetComponent<Image> ().color = Color.gray;
+			}
+		}
+			
 	}
 
 	private void Craft(){
@@ -82,26 +193,21 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
-
 					if(!ttmp.IsEmpty){
-						if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake && vineToTake != 0) {
+						if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
 							ttmp.decreaseFromCraft(vineToTake);
-							vineToTake = vineToTake - ttmp.Items.Count;
 							bottleVines = false;
-						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake && woodToTake != 0) {
+						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
-							woodToTake = woodToTake - ttmp.Items.Count;
 							bottleWood = false;
 						}
 					}
-					if (bottleVines == false && bottleWood == false) {
+					if (bottleVines == false || bottleWood == false) {
 						GetComponent<Image> ().color = Color.gray;
 					}
 				}
 			}
-
 			//appear in bag
-			//Item newBottle = new Item();
 			Item newBottle = gameObject.AddComponent<Item>();
 			newBottle.type = ItemType.BOTTLE;
 			SpriteState theState = GetComponent<Button> ().spriteState;
@@ -109,6 +215,181 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newBottle.spriteHighlighted = theState.highlightedSprite;
 			newBottle.maxSize = 99;
 			theBag.AddItem(newBottle);
+		}
+
+		if (craftItems.ctype == CraftType.SWORD && swordWood == true && swordFire == true && swordStone == true) {
+			//take out used materials
+			int stoneToTake = 10;
+			int woodToTake = 5;
+			int fireToTake = 1;
+			if (GetComponent<Image> ().color == Color.white) {
+				foreach (GameObject slot in theBag.AllSlots) {
+					Slot ttmp = slot.GetComponent<Slot> ();
+					if(!ttmp.IsEmpty){
+						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
+							ttmp.decreaseFromCraft(stoneToTake);
+							swordStone = false;
+						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
+							ttmp.decreaseFromCraft(woodToTake);
+							swordWood = false;
+						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
+							ttmp.decreaseFromCraft(fireToTake);
+							swordFire = false;
+						}
+					}
+					if (swordStone == false || swordWood == false || swordFire == false) {
+						GetComponent<Image> ().color = Color.gray;
+					}
+				}
+			}
+			//appear in bag
+			Item newSword = gameObject.AddComponent<Item>();
+			newSword.type = ItemType.SWORD;
+			SpriteState theState = GetComponent<Button> ().spriteState;
+			newSword.spriteNeutral = theState.pressedSprite;
+			newSword.spriteHighlighted = theState.highlightedSprite;
+			newSword.maxSize = 99;
+			theBag.AddItem(newSword);
+		}
+
+		if (craftItems.ctype == CraftType.HAMMER && hammerWood == true && hammerFire == true && hammerStone == true) {
+			//take out used materials
+			int stoneToTake = 15;
+			int woodToTake = 15;
+			int fireToTake = 2;
+			if (GetComponent<Image> ().color == Color.white) {
+				foreach (GameObject slot in theBag.AllSlots) {
+					Slot ttmp = slot.GetComponent<Slot> ();
+					if(!ttmp.IsEmpty){
+						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
+							ttmp.decreaseFromCraft(stoneToTake);
+							hammerStone = false;
+						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
+							ttmp.decreaseFromCraft(woodToTake);
+							hammerWood = false;
+						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
+							ttmp.decreaseFromCraft(fireToTake);
+							hammerFire = false;
+						}
+					}
+					if (hammerStone == false || hammerWood == false || hammerFire == false) {
+						GetComponent<Image> ().color = Color.gray;
+					}
+				}
+			}
+			//appear in bag
+			Item newHammer = gameObject.AddComponent<Item>();
+			newHammer.type = ItemType.HAMMER;
+			SpriteState theState = GetComponent<Button> ().spriteState;
+			newHammer.spriteNeutral = theState.pressedSprite;
+			newHammer.spriteHighlighted = theState.highlightedSprite;
+			newHammer.maxSize = 99;
+			theBag.AddItem(newHammer);
+		}
+
+		if (craftItems.ctype == CraftType.HELMET && helmetVines == true && helmetFire == true && helmetStone == true) {
+			//take out used materials
+			int stoneToTake = 5;
+			int vineToTake = 5;
+			int fireToTake = 2;
+			if (GetComponent<Image> ().color == Color.white) {
+				foreach (GameObject slot in theBag.AllSlots) {
+					Slot ttmp = slot.GetComponent<Slot> ();
+					if(!ttmp.IsEmpty){
+						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
+							ttmp.decreaseFromCraft(stoneToTake);
+							helmetStone = false;
+						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
+							ttmp.decreaseFromCraft(vineToTake);
+							helmetVines = false;
+						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
+							ttmp.decreaseFromCraft(fireToTake);
+							helmetFire = false;
+						}
+					}
+					if (helmetStone == false || helmetVines == false || helmetFire == false) {
+						GetComponent<Image> ().color = Color.gray;
+					}
+				}
+			}
+			//appear in bag
+			Item newHelmet = gameObject.AddComponent<Item>();
+			newHelmet.type = ItemType.HELMET;
+			SpriteState theState = GetComponent<Button> ().spriteState;
+			newHelmet.spriteNeutral = theState.pressedSprite;
+			newHelmet.spriteHighlighted = theState.highlightedSprite;
+			newHelmet.maxSize = 99;
+			theBag.AddItem(newHelmet);
+		}
+
+		if (craftItems.ctype == CraftType.BOOT && bootVines == true && bootWater == true && bootWood == true) {
+			//take out used materials
+			int woodToTake = 5;
+			int vineToTake = 5;
+			int waterToTake = 1;
+			if (GetComponent<Image> ().color == Color.white) {
+				foreach (GameObject slot in theBag.AllSlots) {
+					Slot ttmp = slot.GetComponent<Slot> ();
+					if(!ttmp.IsEmpty){
+						if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
+							ttmp.decreaseFromCraft(woodToTake);
+							bootWood = false;
+						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
+							ttmp.decreaseFromCraft(vineToTake);
+							bootVines = false;
+						} else if (ttmp.CurrentItem.type == ItemType.WATER && ttmp.Items.Count >= waterToTake) {
+							ttmp.decreaseFromCraft(waterToTake);
+							bootWater = false;
+						}
+					}
+					if (bootWood == false || bootVines == false || bootWater == false) {
+						GetComponent<Image> ().color = Color.gray;
+					}
+				}
+			}
+			//appear in bag
+			Item newBoot = gameObject.AddComponent<Item>();
+			newBoot.type = ItemType.BOOT;
+			SpriteState theState = GetComponent<Button> ().spriteState;
+			newBoot.spriteNeutral = theState.pressedSprite;
+			newBoot.spriteHighlighted = theState.highlightedSprite;
+			newBoot.maxSize = 99;
+			theBag.AddItem(newBoot);
+		}
+
+		if (craftItems.ctype == CraftType.ARMOR && armorVines == true && armorFire == true && armorStone == true) {
+			//take out used materials
+			int stoneToTake = 5;
+			int vineToTake = 5;
+			int fireToTake = 1;
+			if (GetComponent<Image> ().color == Color.white) {
+				foreach (GameObject slot in theBag.AllSlots) {
+					Slot ttmp = slot.GetComponent<Slot> ();
+					if(!ttmp.IsEmpty){
+						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
+							ttmp.decreaseFromCraft(stoneToTake);
+							armorStone = false;
+						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
+							ttmp.decreaseFromCraft(vineToTake);
+							armorVines = false;
+						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
+							ttmp.decreaseFromCraft(fireToTake);
+							armorFire = false;
+						}
+					}
+					if (armorStone == false || armorVines == false || armorFire == false) {
+						GetComponent<Image> ().color = Color.gray;
+					}
+				}
+			}
+			//appear in bag
+			Item newArmor = gameObject.AddComponent<Item>();
+			newArmor.type = ItemType.ARMOR;
+			SpriteState theState = GetComponent<Button> ().spriteState;
+			newArmor.spriteNeutral = theState.pressedSprite;
+			newArmor.spriteHighlighted = theState.highlightedSprite;
+			newArmor.maxSize = 99;
+			theBag.AddItem(newArmor);
 		}
 	}
 
