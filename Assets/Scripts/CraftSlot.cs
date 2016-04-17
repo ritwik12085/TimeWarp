@@ -34,6 +34,9 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	private bool armorVines;
 	private bool armorStone;
 	private bool armorFire;
+	private bool shipPart1Helmet;
+	private bool shipPart1Hammer;
+	private bool shipPart1Fire;
 
 	// Use this for initialization
 	void Start () {
@@ -130,11 +133,28 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 					} else {
 						armorFire = false;
 					}
+					if (stmp.Items.Count >= 3) {
+						shipPart1Fire = true;
+					} else {
+						shipPart1Fire = false;
+					}
 				} else if (stmp.CurrentItem.type == ItemType.WATER /*&& stmp.Items.Count > 0*/) {
 					if (stmp.Items.Count >= 1) {
 						bootWater = true;
 					} else {
 						bootWater = false;
+					}
+				} else if (stmp.CurrentItem.type == ItemType.HELMET /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 1) {
+						shipPart1Helmet = true;
+					} else {
+						shipPart1Helmet = false;
+					}
+				} else if (stmp.CurrentItem.type == ItemType.HAMMER /*&& stmp.Items.Count > 0*/) {
+					if (stmp.Items.Count >= 2) {
+						shipPart1Hammer = true;
+					} else {
+						shipPart1Hammer = false;
 					}
 				}
 			}
@@ -182,6 +202,13 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 				GetComponent<Image> ().color = Color.gray;
 			}
 		}
+		if(craftItems.ctype == CraftType.SHIPPART1){
+			if (shipPart1Fire == true && shipPart1Hammer == true && shipPart1Helmet ==true) {
+				GetComponent<Image> ().color = Color.white;
+			} else {
+				GetComponent<Image> ().color = Color.gray;
+			}
+		}
 			
 	}
 
@@ -214,6 +241,9 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newBottle.spriteNeutral = theState.pressedSprite;
 			newBottle.spriteHighlighted = theState.highlightedSprite;
 			newBottle.maxSize = 99;
+			newBottle.itemName = "Bottle";
+			newBottle.description = "A bottle you can use to hold water.";
+			newBottle.quality = Quality.QUESTITEM;
 			theBag.AddItem(newBottle);
 		}
 
@@ -249,6 +279,14 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newSword.spriteNeutral = theState.pressedSprite;
 			newSword.spriteHighlighted = theState.highlightedSprite;
 			newSword.maxSize = 99;
+			newSword.itemName = "Sword";
+			newSword.description = "Use this to kick some butt!";
+			newSword.attack = 10;
+			newSword.atkSpeed = 0.1;
+			newSword.atkRange = 1;
+			newSword.accuracy = 0.1;
+			newSword.critChance = 0.1;
+			newSword.quality = Quality.COMMON;
 			theBag.AddItem(newSword);
 		}
 
@@ -284,6 +322,14 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newHammer.spriteNeutral = theState.pressedSprite;
 			newHammer.spriteHighlighted = theState.highlightedSprite;
 			newHammer.maxSize = 99;
+			newHammer.itemName = "Hammer";
+			newHammer.description = "Use this to kick some SERIOUS butt!";
+			newHammer.attack = 20;
+			newHammer.atkSpeed = -0.2;
+			newHammer.atkRange = 2;
+			newHammer.accuracy = -0.2;
+			newHammer.critDamage = 0.1;
+			newHammer.quality = Quality.COMMON;
 			theBag.AddItem(newHammer);
 		}
 
@@ -319,6 +365,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newHelmet.spriteNeutral = theState.pressedSprite;
 			newHelmet.spriteHighlighted = theState.highlightedSprite;
 			newHelmet.maxSize = 99;
+			newHelmet.itemName = "Helmet";
+			newHelmet.description = "Used to protect your cranium.";
+			newHelmet.defense = 10;
+			newHelmet.hp = 10;
+			newHelmet.quality = Quality.COMMON;
 			theBag.AddItem(newHelmet);
 		}
 
@@ -354,6 +405,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newBoot.spriteNeutral = theState.pressedSprite;
 			newBoot.spriteHighlighted = theState.highlightedSprite;
 			newBoot.maxSize = 99;
+			newBoot.itemName = "Pair of Boots";
+			newBoot.description = "Well you can't go barefoot, right?";
+			newBoot.defense = 5;
+			newBoot.hp = 5;
+			newBoot.quality = Quality.COMMON;
 			theBag.AddItem(newBoot);
 		}
 
@@ -389,7 +445,50 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newArmor.spriteNeutral = theState.pressedSprite;
 			newArmor.spriteHighlighted = theState.highlightedSprite;
 			newArmor.maxSize = 99;
+			newArmor.itemName = "Armor";
+			newArmor.description = "Heavy defense boost!";
+			newArmor.defense = 15;
+			newArmor.hp = 20;
+			newArmor.quality = Quality.COMMON;
 			theBag.AddItem(newArmor);
+		}
+
+		if (craftItems.ctype == CraftType.SHIPPART1 && shipPart1Fire == true && shipPart1Hammer == true && shipPart1Helmet == true) {
+			//take out used materials
+			int helmetToTake = 1;
+			int hammerToTake = 2;
+			int fireToTake = 3;
+			if (GetComponent<Image> ().color == Color.white) {
+				foreach (GameObject slot in theBag.AllSlots) {
+					Slot ttmp = slot.GetComponent<Slot> ();
+					if(!ttmp.IsEmpty){
+						if (ttmp.CurrentItem.type == ItemType.HELMET && ttmp.Items.Count >= helmetToTake) {
+							ttmp.decreaseFromCraft(helmetToTake);
+							shipPart1Helmet = false;
+						} else if (ttmp.CurrentItem.type == ItemType.HAMMER && ttmp.Items.Count >= hammerToTake) {
+							ttmp.decreaseFromCraft(hammerToTake);
+							shipPart1Hammer = false;
+						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
+							ttmp.decreaseFromCraft(fireToTake);
+							shipPart1Fire = false;
+						}
+					}
+					if (shipPart1Fire == false || shipPart1Hammer == false || shipPart1Helmet == false) {
+						GetComponent<Image> ().color = Color.gray;
+					}
+				}
+			}
+			//appear in bag
+			Item newShipPart1 = gameObject.AddComponent<Item>();
+			newShipPart1.type = ItemType.SHIPPART1;
+			SpriteState theState = GetComponent<Button> ().spriteState;
+			newShipPart1.spriteNeutral = theState.pressedSprite;
+			newShipPart1.spriteHighlighted = theState.highlightedSprite;
+			newShipPart1.maxSize = 99;
+			newShipPart1.itemName = "Inconceivable Power Source";
+			newShipPart1.description = "Don't know how you made it, but maybe you can go home now!";
+			newShipPart1.quality = Quality.FORSHIP;
+			theBag.AddItem(newShipPart1);
 		}
 	}
 
