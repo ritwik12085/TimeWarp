@@ -54,8 +54,18 @@ public class Inventory : MonoBehaviour {
 		set { emptySlot = value; }
 	}
 
+	private static GameObject tooltip;
+	public GameObject tooltipObject;
+	private static Text sizeText;
+	public Text sizeTextObject;
+	private static Text visualText;
+	public Text visualTextObject;
+
 	// Use this for initialization
 	void Start () {
+		tooltip = tooltipObject;
+		sizeText = sizeTextObject;
+		visualText = visualTextObject;
 		CreateLayout ();
 		//bagPanelGroup = this.GetComponent<CanvasGroup> ();
 		bagPanelGroup = transform.parent.GetComponent<CanvasGroup>();
@@ -83,6 +93,27 @@ public class Inventory : MonoBehaviour {
 			position.Set (position.x, position.y - hoverYOffset);
 			hoverObject.transform.position = canvas.transform.TransformPoint (position);
 		}
+	}
+
+	public void showToolTip(GameObject slot){
+		Slot tmpSlot = slot.GetComponent<Slot>();
+
+		if (!tmpSlot.IsEmpty && hoverObject == null) {
+			visualText.text = tmpSlot.CurrentItem.GetTooltip ();
+			sizeText.text = visualText.text;
+
+			Vector3 slotPos = slot.transform.position;
+			slotPos.x = slotPos.x + slotPaddingLeft;
+			slotPos.y = slotPos.y + 1;
+			tooltip.transform.position = slotPos;
+
+			tooltip.SetActive (true);
+		}
+			
+	}
+
+	public void hideToolTip(){
+		tooltip.SetActive (false);
 	}
 
 	public void CreateLayout()
