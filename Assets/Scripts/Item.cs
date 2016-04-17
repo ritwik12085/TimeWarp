@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {VINE, STONE, FIRE, WOOD, WATER, BOTTLE};
+public enum ItemType {VINE, STONE, FIRE, WOOD, WATER, BOTTLE, SWORD, HAMMER, HELMET, BOOT, ARMOR};
 
 public class Item : MonoBehaviour {
 
@@ -10,6 +10,10 @@ public class Item : MonoBehaviour {
 	public Sprite spriteHighlighted;
 
 	public int maxSize;
+
+	private void Start(){
+		maxSize = 99;
+	}
 
 	public void Use()
 	{
@@ -31,6 +35,9 @@ public class Item : MonoBehaviour {
 			break;
 		case ItemType.BOTTLE:
 			//Debug.Log ("I just used a bottle.");
+			break;
+		case ItemType.SWORD:
+			//Debug.Log ("I just used a sword.");
 			break;
 		}
 	}
