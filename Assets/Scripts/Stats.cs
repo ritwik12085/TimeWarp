@@ -40,7 +40,7 @@ public class Stats : MonoBehaviour {
 		}
 	}
 	public void UpdateStats(float HP, float Defense, float Attack, float Accuracy, float AttackSpeed, float critRangeLow, float critRangeHigh, float critChance, float AttackRange){
-		this.HP = CurrHP;
+		this.HP = CurrHP + HP;
 		this.Defense = Defense + BaseDefense;
 		this.Attack = Attack + BaseAttack;
 		this.Accuracy = Accuracy + BaseAccuracy;
@@ -65,6 +65,15 @@ public class Stats : MonoBehaviour {
 		CurrHP -= damage;
 		UpdateStats (0,0,0,0,0,0,0,0,0);
 	}
+    public void heal(float amount){
+        CurrHP += amount;
+        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    }
+    public void capHP(){
+        CurrHP = MaxHP;
+        HP = MaxHP;
+        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    }
 	public float getAttack(){
 		return this.Attack;
 	}

@@ -17,7 +17,12 @@ public class EnemyHealthBar : MonoBehaviour {
 		offset = new Vector3(0,5,0);
 		healthPanel.transform.position = this.transform.position + offset;
 		stats = this.GetComponent<Stats> ();
-		content = GameObject.FindWithTag ("Health Bar Content").GetComponent<Image> () as Image;
+        Image[] image =healthPanel.GetComponentsInChildren<Image>();
+        foreach(Image item in image){
+            if(item.CompareTag("Health Bar Content")){
+                content = item;
+            }
+        }
 	}
 	
 	// Update is called once per frame

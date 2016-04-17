@@ -53,6 +53,8 @@ public class Inventory : MonoBehaviour {
 		get { return emptySlot; }
 		set { emptySlot = value; }
 	}
+    public ItemType questItem;
+    public QuestTracker quest;
 
 	private static GameObject tooltip;
 	public GameObject tooltipObject;
@@ -60,7 +62,6 @@ public class Inventory : MonoBehaviour {
 	public Text sizeTextObject;
 	private static Text visualText;
 	public Text visualTextObject;
-
 	// Use this for initialization
 	void Start () {
 		tooltip = tooltipObject;
@@ -245,4 +246,19 @@ public class Inventory : MonoBehaviour {
 			bagPanelGroup.interactable = false;
 		}
 	}
+
+    public void collectQuestCheck()
+    {
+        foreach (GameObject slot in allSlots)
+        {
+            Slot stmp = slot.GetComponent<Slot>();
+            if (!stmp.IsEmpty)
+            {
+                if (stmp.CurrentItem.type == questItem)
+                {
+                    quest.count = stmp.Items.Count;
+                }
+            }
+        }
+    }
 }

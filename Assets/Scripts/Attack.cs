@@ -12,13 +12,16 @@ public class Attack : MonoBehaviour {
 	private float nextAttack;
 	private Vector3 textPos;
 	private Color color;
-	void Start(){
+    private Healing heal;
+    void Start(){
 		vision = this.GetComponent<VisionCone> ();
 		player = vision.player;
 		nextAttack = 0.0f;
+        heal = player.GetComponent<Healing>();
 	}
 	void Update () {
 		if (vision.getCanAttack ()) {
+            heal.setTime(Time.time);
 			attackSpeed = this.GetComponent<Stats> ().getAttackSpeed();
 			damage = this.GetComponent<Stats> ().getAttack() - player.GetComponent<Stats> ().getDefense();
 			if (player.GetComponent<Stats> ().getHP() > 0 && Time.time > nextAttack) {
