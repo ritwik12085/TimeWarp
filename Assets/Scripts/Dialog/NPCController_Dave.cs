@@ -16,7 +16,9 @@ public class NPCController_Dave : MonoBehaviour {
     public QuestTracker quest;
     public string questType;
     public int questGoal;
-    public string item;
+    private string item;
+    public ItemType questItem;
+    public int questID;
 
 	// Use this for initialization
 	void Start() {
@@ -24,6 +26,27 @@ public class NPCController_Dave : MonoBehaviour {
 		movementScript = player.GetComponent<Movement>();
 		questInProgress = false;
 		questComplete = false;
+        switch (questItem)
+        {
+            case ItemType.VINE:
+                item = "Vine";
+                break;
+            case ItemType.STONE:
+                item = "Stone";
+                break;
+            case ItemType.FIRE:
+                item = "Fire";
+                break;
+            case ItemType.WOOD:
+                item = "Wood";
+                break;
+            case ItemType.WATER:
+                item = "Water";
+                break;
+            case ItemType.BOTTLE:
+                item = "Bottle";
+                break;
+        }
 	}
 
 	void Awake() {
@@ -57,40 +80,46 @@ public class NPCController_Dave : MonoBehaviour {
 
 	void Talk() {
 		movementScript.SetTarget(player.transform.position);
-		if (!questComplete && !questInProgress) {
-            if(questType == "Kill Quest")
+        if(quest.questID  == 0)
+        {
+            if (!questComplete && !questInProgress)
             {
-                modalPanel.Choice("These monsters have been causing so much trouble! Can you get rid of " + questGoal + " monster?", AcceptQuest, DeclineQuest);
+                if (questType == "Kill Quest")
+                {
+                    modalPanel.Choice("These monsters have been causing so much trouble! Can you get rid of " + questGoal + " monster?", AcceptQuest, DeclineQuest);
+                }
+                else
+                {
+                    modalPanel.Choice("There has been a lot of danger around here lately I haven't been able to collect any " + item + " s. Could you help me collect " + questGoal + " " + item + "s?", AcceptQuest, DeclineQuest);
+                }
+                //modalPanel.Choice("Would you like to start this quest?", AcceptQuest, DeclineQuest);
             }
-            else
+            else if (!questComplete && questInProgress)
             {
-                modalPanel.Choice("There has been a lot of danger around here lately I haven't been able to collect any " + item + "s. Could you help me collect " + questGoal + item + "s>", AcceptQuest, DeclineQuest);
+                modalPanel.Choice("Have you finished my task? Oh... okay come back when its finished.");
             }
-			//modalPanel.Choice("Would you like to start this quest?", AcceptQuest, DeclineQuest);
-		} else if (!questComplete && questInProgress) {
-			modalPanel.Choice("Have you finished my task? Oh... okay come back when its finished.");
-		} else if (questComplete) {
-            if (questType == "Kill Quest")
+            else if (questComplete)
             {
-                modalPanel.Choice("Thanks for killing those monsters!");
+                if (questType == "Kill Quest")
+                {
+                    modalPanel.Choice("Thanks for killing those monsters!\nAllow me to show my appreciation. Take this.");
 
-                questInProgress = false;
-                questComplete = false;
-                quest.QuestComplete = questComplete;
-
-
-                modalPanel.Choice("Allow me to show my appreciation. Take this.");
+                    questInProgress = false;
+                    questComplete = false;
+                    quest.QuestComplete = questComplete;
+                }
+                else
+                {
+                    modalPanel.Choice(" Thanks for all the " + item + "s! I can finally get back to work!\nAllow me to show my appreciation. Take this.");
+                    questInProgress = false;
+                    questComplete = false;
+                    quest.QuestComplete = questComplete;
+                }
             }
-            else
-            {
-                modalPanel.Choice(" Thanks for all the " + item + "s! I can finally get back to work!");
-                questInProgress = false;
-                questComplete = false;
-                quest.QuestComplete = questComplete;
-
-
-                modalPanel.Choice("Allow me to show my appreciation. Take this.");
-            }
+        }
+        else
+        {
+            modalPanel.Choice("It looks like you're helping someone else at the moment. Come back when you're free.");
         }
 	}
 
@@ -100,9 +129,10 @@ public class NPCController_Dave : MonoBehaviour {
         quest.goal = questGoal;
         quest.ActiveQuest = questInProgress;
         quest.QuestComplete = false;
+        quest.questID = questID;
         if (questType == "Collect Quest")
         {
-            quest.targetItem = item;
+            quest.targetItem = questItem;
         }
 
         modalPanel.Choice("Thanks for the help!");

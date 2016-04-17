@@ -9,7 +9,8 @@ public class QuestTracker : MonoBehaviour
     public string type;
     public bool ActiveQuest;
     public bool QuestComplete;
-    public string targetItem;
+    public ItemType targetItem;
+    public int questID;
     void Start()
     {
         count = 0;
@@ -17,13 +18,14 @@ public class QuestTracker : MonoBehaviour
         type = "";
         ActiveQuest = false;
         QuestComplete = false;
-        targetItem = "";
+        targetItem = ItemType.VINE;
+        questID = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ActiveQuest && !QuestComplete && count == goal)
+        if (ActiveQuest && !QuestComplete && count >= goal)
         {
             QuestComplete = true;
         }

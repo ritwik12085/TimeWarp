@@ -9,6 +9,8 @@ public class QuestReward : MonoBehaviour {
     private string type;
     private bool dead;
     public GameObject me;
+    public Inventory inv;
+    public ItemType item;
     void Start () {
         type = "";
         dead = false;
@@ -19,26 +21,24 @@ public class QuestReward : MonoBehaviour {
         ActiveQuest = quest.ActiveQuest;
         QuestComplete = quest.QuestComplete;
         type = quest.type;
+        item = quest.targetItem;
         if (this.transform.CompareTag("Enemy"))
         {
             killQuest();
         }
         else
         {
-
+            collectQuest();
         }
     }
     void killQuest()
     {
         if(type == "Kill Quest")
         {
-            Debug.Log(2);
             if (ActiveQuest && !QuestComplete)
             {
-                Debug.Log(1);
                 if (!me.activeSelf && !dead)
                 {
-                    Debug.Log(0);
                     dead = true;
                     quest.count = quest.count + 1;
                 }
@@ -51,7 +51,7 @@ public class QuestReward : MonoBehaviour {
         {
             if(ActiveQuest && !QuestComplete)
             {
-                Debug.Log("hello");
+                inv.collectQuestCheck();
             }
         }
     }
