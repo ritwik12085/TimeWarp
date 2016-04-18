@@ -9,6 +9,7 @@ public class timeMachine : MonoBehaviour {
 	public Inventory inventory;
 	public Text endLevelText;
 	public Canvas endLevel1Canvas;
+	public Canvas startLevel1Canvas;
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +29,11 @@ public class timeMachine : MonoBehaviour {
 			endLevel1Canvas.GetComponent<CanvasGroup> ().interactable = true;
 			endLevel1Canvas.GetComponent<CanvasGroup> ().blocksRaycasts = true;
 		}
+	}
+
+	public void toggleStartCanvas(){
+		startLevel1Canvas.GetComponent<CanvasGroup> ().alpha = 0;
+		startLevel1Canvas.GetComponent<CanvasGroup> ().interactable = false;
+		startLevel1Canvas.GetComponent<CanvasGroup> ().blocksRaycasts = false;
 	}
 }
