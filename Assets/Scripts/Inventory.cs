@@ -277,4 +277,44 @@ public class Inventory : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public bool endLevel2Check()
+    {
+        foreach (GameObject slot in allSlots)
+        {
+            Slot stmp = slot.GetComponent<Slot>();
+            if (!stmp.IsEmpty)
+            {
+                if (stmp.CurrentItem.type == ItemType.SHIPPART1)
+                {
+                    if(stmp.Items.Count >= 3)
+                    {
+                        return true;
+                    }
+                    
+                }
+            }
+        }
+        return false;
+    }
+
+    public bool endLevel3Check()
+    {
+        foreach (GameObject slot in allSlots)
+        {
+            Slot stmp = slot.GetComponent<Slot>();
+            if (!stmp.IsEmpty)
+            {
+                if (stmp.CurrentItem.type == ItemType.SHIPPART1)
+                {
+                    if (stmp.Items.Count >= 5)
+                    {
+                        return true;
+                    }
+
+                }
+            }
+        }
+        return false;
+    }
 }

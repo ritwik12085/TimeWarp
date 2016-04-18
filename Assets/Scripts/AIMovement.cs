@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 
 public class AIMovement : MonoBehaviour {
 
-	private Animator animator;
 	public GameObject player;
 	public float speed;
 	private VisionCone vision;

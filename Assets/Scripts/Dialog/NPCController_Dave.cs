@@ -41,9 +41,6 @@ public class NPCController_Dave : MonoBehaviour {
             case ItemType.WOOD:
                 item = "Wood";
                 break;
-            /*case ItemType.WATER:
-                item = "Water";
-                break;*/
             case ItemType.BOTTLE:
                 item = "Bottle";
                 break;
@@ -116,7 +113,7 @@ public class NPCController_Dave : MonoBehaviour {
             {
                 if (questType == "Kill Quest")
                 {
-                    modalPanel.Choice("Thanks for killing those monsters!\nAllow me to show my appreciation. Take this.");
+                    modalPanel.Choice("Thanks for killing those monsters!");
 
                     questInProgress = false;
                     questComplete = false;
@@ -127,7 +124,7 @@ public class NPCController_Dave : MonoBehaviour {
                 }
                 else
                 {
-                    modalPanel.Choice("Thanks for all the " + item + "s! I can finally get back to work!\nAllow me to show my appreciation. Take this.");
+                    modalPanel.Choice("Thanks for all the " + item + "s! I can finally get back to work!");
                     questInProgress = false;
                     questComplete = false;
                     QuestDone = true;
@@ -135,6 +132,8 @@ public class NPCController_Dave : MonoBehaviour {
                     quest.questID = 0;
                     quest.count = 0;
                 }
+
+                player.GetComponent<Reputation>().addRep(50);
             }
         }
         else
