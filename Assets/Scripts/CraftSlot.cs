@@ -38,9 +38,13 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	private bool shipPart1Hammer;
 	private bool shipPart1Fire;
 
-	public Image bottleImage;
-	public Image swordImage;
-
+	public CraftSlot bottle;
+	public CraftSlot sword;
+	public CraftSlot hammer;
+	public CraftSlot helmet;
+	public CraftSlot boot;
+	public CraftSlot armor;
+	public CraftSlot shipPart1;
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +54,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	
 	// Update is called once per frame
 	void Update () {
+		
+			
+	}
+
+	private void Craft(){
 		foreach (GameObject slot in theBag.AllSlots) {
 			Slot stmp = slot.GetComponent<Slot> ();
 
@@ -165,7 +174,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			}
 		}
 
-		if(craftItems.ctype == CraftType.BOTTLE){
+		/*if(craftItems.ctype == CraftType.BOTTLE){
 			if (bottleWood == true && bottleVines == true) {
 				GetComponent<Image> ().color = Color.white;
 			} else {
@@ -213,16 +222,19 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			} else {
 				GetComponent<Image> ().color = Color.gray;
 			}
-		}
-			
-	}
+		}*/
 
-	private void Craft(){
+		Debug.Log (hammerStone);
+
+
+
+
+
 		if (craftItems.ctype == CraftType.BOTTLE && bottleVines == true && bottleWood == true) {
 			//take out used materials
 			int vineToTake = 1;
 			int woodToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -242,11 +254,12 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (bottleVines == false || bottleWood == false) {
+					/*if (bottleVines == false || bottleWood == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newBottle = gameObject.AddComponent<Item>();
 			newBottle.type = ItemType.BOTTLE;
@@ -267,7 +280,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			int stoneToTake = 1;
 			int woodToTake = 1;
 			int fireToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -295,11 +308,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (swordStone == false || swordWood == false || swordFire == false) {
+					/*if (swordStone == false || swordWood == false || swordFire == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newSword = gameObject.AddComponent<Item>();
 			newSword.type = ItemType.SWORD;
@@ -316,6 +329,9 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newSword.critChance = 0.1f;
 			newSword.quality = Quality.COMMON;
 			theBag.AddItem(newSword);
+
+			Debug.Log (hammerStone);
+
 		}
 
 		if (craftItems.ctype == CraftType.HAMMER && hammerWood == true && hammerFire == true && hammerStone == true) {
@@ -323,7 +339,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			int stoneToTake = 1;
 			int woodToTake = 1;
 			int fireToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -354,11 +370,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (hammerStone == false || hammerWood == false || hammerFire == false) {
+					/*if (hammerStone == false || hammerWood == false || hammerFire == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newHammer = gameObject.AddComponent<Item>();
 			newHammer.type = ItemType.HAMMER;
@@ -382,7 +398,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			int stoneToTake = 1;
 			int vineToTake = 1;
 			int fireToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -411,11 +427,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (helmetStone == false || helmetVines == false || helmetFire == false) {
+					/*if (helmetStone == false || helmetVines == false || helmetFire == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newHelmet = gameObject.AddComponent<Item>();
 			newHelmet.type = ItemType.HELMET;
@@ -436,7 +452,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			int woodToTake = 1;
 			int vineToTake = 1;
 			int waterToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -460,11 +476,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (bootWood == false || bootVines == false || bootWater == false) {
+					/*if (bootWood == false || bootVines == false || bootWater == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newBoot = gameObject.AddComponent<Item>();
 			newBoot.type = ItemType.BOOT;
@@ -485,7 +501,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			int stoneToTake = 1;
 			int vineToTake = 1;
 			int fireToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -513,11 +529,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (armorStone == false || armorVines == false || armorFire == false) {
+					/*if (armorStone == false || armorVines == false || armorFire == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newArmor = gameObject.AddComponent<Item>();
 			newArmor.type = ItemType.ARMOR;
@@ -538,7 +554,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			int helmetToTake = 1;
 			int hammerToTake = 1;
 			int fireToTake = 1;
-			if (GetComponent<Image> ().color == Color.white) {
+			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
 					if(!ttmp.IsEmpty){
@@ -560,11 +576,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 						}
 					}
-					if (shipPart1Fire == false || shipPart1Hammer == false || shipPart1Helmet == false) {
+					/*if (shipPart1Fire == false || shipPart1Hammer == false || shipPart1Helmet == false) {
 						GetComponent<Image> ().color = Color.gray;
-					}
+					}*/
 				}
-			}
+			//}
 			//appear in bag
 			Item newShipPart1 = gameObject.AddComponent<Item>();
 			newShipPart1.type = ItemType.SHIPPART1;

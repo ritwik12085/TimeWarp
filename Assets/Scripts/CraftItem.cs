@@ -18,6 +18,9 @@ public class CraftItem : MonoBehaviour {
 
 	public string description;
 
+	public string material1, material2, material3;
+	public int numMat1, numMat2, numMat3;
+
 	public void requiredMaterials(){
 		switch (ctype) {
 		case CraftType.BOTTLE:
@@ -39,6 +42,7 @@ public class CraftItem : MonoBehaviour {
 		string stats = string.Empty;
 		string color = string.Empty;
 		string newLine = string.Empty;
+		string materials = string.Empty;
 
 		if (description != string.Empty) {
 			newLine = "\n";
@@ -55,6 +59,7 @@ public class CraftItem : MonoBehaviour {
 			color = "blue";
 			break;
 		}
+
 
 		if (hp > 0) {
 			stats += "\n+" + hp.ToString () + "HP";
@@ -81,6 +86,16 @@ public class CraftItem : MonoBehaviour {
 			stats += "\n+" + critChance.ToString () + "Crit Chance";
 		}
 
-		return string.Format ("<color=" + color + "><size=16>{0}</size></color><size=14><i><color=lime>" + newLine + "{1}</color></i>{2}</size>", itemName, description, stats);
+		if (material1 != string.Empty && numMat1 != 0) {
+			materials += /*"\n " + */numMat1 + " " + material1;
+		}
+		if (material2 != string.Empty && numMat2 != 0) {
+			materials += "\n " + numMat2 + " " + material2;
+		}
+		if (material3 != string.Empty && numMat3 != 0) {
+			materials += "\n " + numMat3 + " " + material3;
+		}
+
+		return string.Format ("<color=" + color + "><size=16>{0}</size></color><size=14><i><color=lime>" + newLine + "{1}</color></i>{2}</size>" + newLine + "<color=yellow>Materials</color>"+newLine+"<color=white>{3}</color>", itemName, description, stats, materials);
 	}
 }

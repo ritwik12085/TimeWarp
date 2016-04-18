@@ -103,8 +103,8 @@ public class Inventory : MonoBehaviour {
 			sizeText.text = visualText.text;
 
 			Vector3 slotPos = slot.transform.position;
-			slotPos.x = slotPos.x + slotPaddingLeft;
-			slotPos.y = slotPos.y + 2;
+			slotPos.x = slotPos.x + 5;
+			slotPos.y = slotPos.y + 1;
 			tooltip.transform.position = slotPos;
 
 			tooltip.SetActive (true);

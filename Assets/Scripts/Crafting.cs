@@ -51,6 +51,7 @@ public class Crafting : MonoBehaviour {
 			csizeText.text = cvisualText.text;
 
 			Vector3 slotPos = slot.transform.position;
+			slotPos.x = slotPos.x - 3;
 			slotPos.y = slotPos.y + 1;
 			ctooltip.transform.position = slotPos;
 
