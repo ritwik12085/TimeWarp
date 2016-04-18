@@ -14,13 +14,13 @@ public class Crafting : MonoBehaviour {
 		get { return Crafting.craftPanelGroup; }
 	}
 
-	public Canvas bottleMaterialsStatus;
+	/*public Canvas bottleMaterialsStatus;
 	public Canvas swordMaterialsStatus;
 	public Canvas hammerMaterialsStatus;
 	public Canvas helmetMaterialsStatus;
 	public Canvas bootMaterialsStatus;
 	public Canvas armorMaterialsStatus;
-	public Canvas shipPart1MaterialsStatus;
+	public Canvas shipPart1MaterialsStatus;*/
 
 	private static GameObject ctooltip;
 	public GameObject ctooltipObject;
@@ -76,7 +76,7 @@ public class Crafting : MonoBehaviour {
 		}
 	}
 
-	public void SeeMaterialsNeeded(Canvas selectCanvas){
+	/*public void SeeMaterialsNeeded(Canvas selectCanvas){
 		if (selectCanvas.CompareTag("Bottle M Canvas") && bottleMaterialsStatus.GetComponent<CanvasGroup> ().alpha == 0) {
 			CanvasGroup materialsPanelGroup = bottleMaterialsStatus.GetComponent<CanvasGroup> ();
 			materialsPanelGroup.alpha = 1;
@@ -126,6 +126,6 @@ public class Crafting : MonoBehaviour {
 			CanvasGroup materialsPanelGroup = shipPart1MaterialsStatus.GetComponent<CanvasGroup> ();
 			materialsPanelGroup.alpha = 0;
 		}
-	}
+	}*/
 		
 }
