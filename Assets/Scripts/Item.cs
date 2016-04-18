@@ -12,7 +12,7 @@ public class Item : MonoBehaviour {
 
 	public int maxSize;
 
-	public double hp, attack, defense, accuracy, atkSpeed, atkRange, critDamage, critChance;
+	public float hp, attack, defense, accuracy, atkSpeed, atkRange, critDamage, critChance;
 
 	public string itemName;
 
@@ -68,7 +68,7 @@ public class Item : MonoBehaviour {
 				color = "magenta";
 				break;
 			case Quality.FORSHIP:
-				color = "lime";
+				color = "blue";
 				break;
 		}
 

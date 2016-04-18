@@ -101,4 +101,8 @@ public class Stats : MonoBehaviour {
 	public float getMaxHP(){
 		return this.MaxHP;
 	}
+
+	public void updateTheStats(EquipmentItem theItem){
+		UpdateStats(theItem.hp, theItem.defense, theItem.attack, theItem.accuracy, theItem.atkSpeed, theItem.critDamage, theItem.critDamage, theItem.critChance, theItem.atkRange);
+	}
 }
