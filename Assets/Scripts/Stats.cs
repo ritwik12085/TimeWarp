@@ -70,17 +70,17 @@ public class Stats : MonoBehaviour {
 	}
 	public void setHP(float damage){
 		CurrHP -= damage;
-        equipUpdate();
+        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
     }
     public void heal(float amount){
         CurrHP += amount;
-        equipUpdate();
+        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
     public void capHP(){
         CurrHP = MaxHP;
         HP = MaxHP;
-        equipUpdate();
+        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 	public float getAttack(){
 		return this.Attack;
