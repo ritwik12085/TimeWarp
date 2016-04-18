@@ -281,11 +281,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newSword.maxSize = 99;
 			newSword.itemName = "Sword";
 			newSword.description = "Use this to kick some butt!";
-			newSword.attack = 10;
-			newSword.atkSpeed = 0.1;
-			newSword.atkRange = 1;
-			newSword.accuracy = 0.1;
-			newSword.critChance = 0.1;
+			newSword.attack = 10f;
+			newSword.atkSpeed = 0.1f;
+			newSword.atkRange = 1f;
+			newSword.accuracy = 0.1f;
+			newSword.critChance = 0.1f;
 			newSword.quality = Quality.COMMON;
 			theBag.AddItem(newSword);
 		}
@@ -324,11 +324,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newHammer.maxSize = 99;
 			newHammer.itemName = "Hammer";
 			newHammer.description = "Use this to kick some SERIOUS butt!";
-			newHammer.attack = 20;
-			newHammer.atkSpeed = -0.2;
-			newHammer.atkRange = 2;
-			newHammer.accuracy = -0.2;
-			newHammer.critDamage = 0.1;
+			newHammer.attack = 20f;
+			newHammer.atkSpeed = -0.2f;
+			newHammer.atkRange = 2f;
+			newHammer.accuracy = -0.2f;
+			newHammer.critDamage = 0.1f;
 			newHammer.quality = Quality.COMMON;
 			theBag.AddItem(newHammer);
 		}
@@ -367,8 +367,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newHelmet.maxSize = 99;
 			newHelmet.itemName = "Helmet";
 			newHelmet.description = "Used to protect your cranium.";
-			newHelmet.defense = 10;
-			newHelmet.hp = 10;
+			newHelmet.defense = 10f;
+			newHelmet.hp = 10f;
 			newHelmet.quality = Quality.COMMON;
 			theBag.AddItem(newHelmet);
 		}
@@ -407,8 +407,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newBoot.maxSize = 99;
 			newBoot.itemName = "Pair of Boots";
 			newBoot.description = "Well you can't go barefoot, right?";
-			newBoot.defense = 5;
-			newBoot.hp = 5;
+			newBoot.defense = 5f;
+			newBoot.hp = 5f;
 			newBoot.quality = Quality.COMMON;
 			theBag.AddItem(newBoot);
 		}
@@ -447,8 +447,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newArmor.maxSize = 99;
 			newArmor.itemName = "Armor";
 			newArmor.description = "Heavy defense boost!";
-			newArmor.defense = 15;
-			newArmor.hp = 20;
+			newArmor.defense = 15f;
+			newArmor.hp = 20f;
 			newArmor.quality = Quality.COMMON;
 			theBag.AddItem(newArmor);
 		}

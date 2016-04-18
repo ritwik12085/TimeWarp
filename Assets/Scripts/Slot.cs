@@ -33,6 +33,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		get {  return items.Peek ();}
 	}
 
+	public Equipment equipment;
+
 	// Use this for initialization
 	void Start () {
 		items = new Stack<Item> ();
@@ -82,6 +84,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	private void UseItem(){
 		if(!IsEmpty){
+			if (CurrentItem.type == ItemType.SWORD) {
+				equipment.weaponEquipSlot.EquipSword ();
+			}
+			if (CurrentItem.type == ItemType.HAMMER) {
+				equipment.weaponEquipSlot.EquipHammer ();
+			}
+			if (CurrentItem.type == ItemType.HELMET) {
+				equipment.headEquipSlot.EquipHelmet ();
+			}
+			if (CurrentItem.type == ItemType.ARMOR) {
+				equipment.armorEquipSlot.EquipArmor ();
+			}
+			if (CurrentItem.type == ItemType.BOOT) {
+				equipment.feetEquipSlot.EquipBoots ();
+			}
+
 			items.Pop ().Use ();
 
 			stackTxt.text = items.Count > 1 ? items.Count.ToString () : string.Empty;
@@ -90,6 +108,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 				ChangeSprite (slotEmpty, slotHighlight);
 				Inventory.EmptySlot++;
 			}
+
 		}
 	}
 

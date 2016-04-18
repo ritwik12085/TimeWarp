@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour {
 
 			Vector3 slotPos = slot.transform.position;
 			slotPos.x = slotPos.x + slotPaddingLeft;
-			slotPos.y = slotPos.y + 1;
+			slotPos.y = slotPos.y + 2;
 			tooltip.transform.position = slotPos;
 
 			tooltip.SetActive (true);
@@ -240,9 +240,11 @@ public class Inventory : MonoBehaviour {
 		if (bagPanelGroup.alpha == 0) {
 			bagPanelGroup.alpha = 1;
 			bagPanelGroup.interactable = true;
+			bagPanelGroup.blocksRaycasts = true;
 		} else if(!GameObject.Find("Hover")){
 			bagPanelGroup.alpha = 0;
 			bagPanelGroup.interactable = false;
+			bagPanelGroup.blocksRaycasts = false;
 		}
 	}
 }
