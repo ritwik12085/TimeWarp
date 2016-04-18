@@ -43,7 +43,7 @@ public class Stats : MonoBehaviour {
         if(HP > MaxHP)
         {
             HP = MaxHP;
-            UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            equipUpdate();
         }
 	}
 	public void UpdateStats(float HP, float Defense, float Attack, float Accuracy, float AttackSpeed, float critRangeLow, float critRangeHigh, float critChance, float AttackRange){
@@ -70,16 +70,17 @@ public class Stats : MonoBehaviour {
 	}
 	public void setHP(float damage){
 		CurrHP -= damage;
-		UpdateStats (0,0,0,0,0,0,0,0,0);
-	}
+        equipUpdate();
+
+    }
     public void heal(float amount){
         CurrHP += amount;
-        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        equipUpdate();
     }
     public void capHP(){
         CurrHP = MaxHP;
         HP = MaxHP;
-        UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        equipUpdate();
     }
 	public float getAttack(){
 		return this.Attack;

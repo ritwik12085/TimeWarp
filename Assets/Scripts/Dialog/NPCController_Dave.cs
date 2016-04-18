@@ -93,7 +93,7 @@ public class NPCController_Dave : MonoBehaviour {
                 }
                 else
                 {
-                    modalPanel.Choice("There has been a lot of danger around here lately I haven't been able to collect any " + item + "s. Could you help me collect " + questGoal + " " + item + "s?", AcceptQuest, DeclineQuest);
+                    modalPanel.Choice("There has been a lot of danger around here lately I seen any " + item + "s. Could you help me see " + questGoal + " " + item + "s?", AcceptQuest, DeclineQuest);
                 }
                 //modalPanel.Choice("Would you like to start this quest?", AcceptQuest, DeclineQuest);
             }
@@ -105,7 +105,7 @@ public class NPCController_Dave : MonoBehaviour {
                 }
                 else
                 {
-                    modalPanel.Choice("Have you collected " + questGoal + " " + item + "s yet? Oh... well come back when you finish.");
+                    modalPanel.Choice("Have you found " + questGoal + " " + item + "s yet? Oh... well come back when you finish.");
                 }
                     
             }
@@ -124,7 +124,7 @@ public class NPCController_Dave : MonoBehaviour {
                 }
                 else
                 {
-                    modalPanel.Choice("Thanks for all the " + item + "s! I can finally get back to work!");
+                    modalPanel.Choice("Thanks for showing me " + item + "s! I can finally get back to work!");
                     questInProgress = false;
                     questComplete = false;
                     QuestDone = true;
