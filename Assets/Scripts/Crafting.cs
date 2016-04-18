@@ -67,9 +67,11 @@ public class Crafting : MonoBehaviour {
 		if (craftPanelGroup.alpha == 0) {
 			craftPanelGroup.alpha = 1;
 			craftPanelGroup.interactable = true;
+			craftPanelGroup.blocksRaycasts = true;
 		} else if(!GameObject.Find("Hover")){
 			craftPanelGroup.alpha = 0;
 			craftPanelGroup.interactable = false;
+			craftPanelGroup.blocksRaycasts = false;
 		}
 	}
 

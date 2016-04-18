@@ -10,7 +10,7 @@ public class CraftItem : MonoBehaviour {
 	public Sprite spriteNeutral;
 	public Sprite spriteHighlighted;
 
-	public double hp, attack, defense, accuracy, atkSpeed, atkRange, critDamage, critChance;
+	public float hp, attack, defense, accuracy, atkSpeed, atkRange, critDamage, critChance;
 
 	public string itemName;
 
@@ -52,7 +52,7 @@ public class CraftItem : MonoBehaviour {
 			color = "magenta";
 			break;
 		case CQuality.FORSHIP:
-			color = "lime";
+			color = "blue";
 			break;
 		}
 
