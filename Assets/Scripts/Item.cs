@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum ItemType {VINE, STONE, FIRE, WOOD, WATER, BOTTLE, SWORD, HAMMER, HELMET, BOOT, ARMOR, SHIPPART1}
+public enum ItemType {VINE, STONE, FIRE, WOOD, BOTTLE, SWORD, HAMMER, HELMET, BOOT, ARMOR, SHIPPART1}
 public enum Quality {COMMON, QUESTITEM, FORSHIP}
 
 public class Item : MonoBehaviour {
@@ -39,9 +39,9 @@ public class Item : MonoBehaviour {
 		case ItemType.WOOD:
 			//Debug.Log ("I just used some wood.");
 			break;
-		case ItemType.WATER:
+		/*case ItemType.WATER:
 			//Debug.Log ("I just used water.");
-			break;
+			break;*/
 		case ItemType.BOTTLE:
 			//Debug.Log ("I just used a bottle.");
 			break;

@@ -41,9 +41,9 @@ public class NPCController_Dave : MonoBehaviour {
             case ItemType.WOOD:
                 item = "Wood";
                 break;
-            case ItemType.WATER:
+            /*case ItemType.WATER:
                 item = "Water";
-                break;
+                break;*/
             case ItemType.BOTTLE:
                 item = "Bottle";
                 break;
