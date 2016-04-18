@@ -23,7 +23,7 @@ public class VisionCone : MonoBehaviour {
             direction = player.transform.position;
         }
         else{
-             direction = this.gameObject.GetComponent<AIMovement>().getDirection();
+             direction = this.gameObject.GetComponent<AIMovementType1>().getDirection();
         }
 		float distance = Vector3.Distance(player.transform.position, transform.position);
 		float angle = Vector3.Angle(targetDir, direction);

@@ -10,7 +10,7 @@ public class ModalPanel : MonoBehaviour {
 	public Button okButton;
 	public Button yesButton;
 	public Button noButton;
-	public Button cancelButton;
+	public Button killButton;
 	public GameObject modalPanelObject;
 
 	private static ModalPanel modalPanel;
@@ -46,7 +46,7 @@ public class ModalPanel : MonoBehaviour {
 		okButton.gameObject.SetActive(true);
 		yesButton.gameObject.SetActive(false);
 		noButton.gameObject.SetActive(false);
-		cancelButton.gameObject.SetActive(false);
+		killButton.gameObject.SetActive(false);
 	}
 
 	// Announcement: a string and an OK event
@@ -63,7 +63,7 @@ public class ModalPanel : MonoBehaviour {
 		okButton.gameObject.SetActive(true);
 		yesButton.gameObject.SetActive(false);
 		noButton.gameObject.SetActive(false);
-		cancelButton.gameObject.SetActive(false);
+		killButton.gameObject.SetActive(false);
 	}
 
 	// Yes/No: a string, a Yes event, and a No event
@@ -84,11 +84,35 @@ public class ModalPanel : MonoBehaviour {
 		okButton.gameObject.SetActive(false);
 		yesButton.gameObject.SetActive(true);
 		noButton.gameObject.SetActive(true);
-		cancelButton.gameObject.SetActive(false);
+		killButton.gameObject.SetActive(false);
 	}
 
+
+
+	public void Choice(string dialog, UnityAction okEvent, UnityAction killEvent, int i) {
+		modalPanelObject.SetActive(true);
+
+		okButton.onClick.RemoveAllListeners();
+		okButton.onClick.AddListener(okEvent);
+		okButton.onClick.AddListener(ClosePanel);
+
+		killButton.onClick.RemoveAllListeners();
+		killButton.onClick.AddListener(killEvent);
+		killButton.onClick.AddListener(ClosePanel);
+
+		this.dialog.text = dialog;
+
+		this.iconImage.gameObject.SetActive(false);
+		okButton.gameObject.SetActive(true);
+		yesButton.gameObject.SetActive(false);
+		noButton.gameObject.SetActive(false);
+		killButton.gameObject.SetActive(true);
+	}
+
+
+
 	// Yes/No/Cancel: a string, a Yes event, a No event, and a Cancel event
-	public void Choice(string dialog, UnityAction yesEvent, UnityAction noEvent, UnityAction cancelEvent) {
+	public void Choice(string dialog, UnityAction yesEvent, UnityAction noEvent, UnityAction killEvent) {
 		modalPanelObject.SetActive(true);
 
 		yesButton.onClick.RemoveAllListeners();
@@ -99,9 +123,9 @@ public class ModalPanel : MonoBehaviour {
 		noButton.onClick.AddListener(noEvent);
 		noButton.onClick.AddListener(ClosePanel);
 
-		cancelButton.onClick.RemoveAllListeners();
-		cancelButton.onClick.AddListener(cancelEvent);
-		cancelButton.onClick.AddListener(ClosePanel);
+		killButton.onClick.RemoveAllListeners();
+		killButton.onClick.AddListener(killEvent);
+		killButton.onClick.AddListener(ClosePanel);
 
 		this.dialog.text = dialog;
 
@@ -109,11 +133,11 @@ public class ModalPanel : MonoBehaviour {
 		okButton.gameObject.SetActive(false);
 		yesButton.gameObject.SetActive(true);
 		noButton.gameObject.SetActive(true);
-		cancelButton.gameObject.SetActive(true);
+		killButton.gameObject.SetActive(true);
 	}
 
 	// Yes/No/Cancel with Image: a string, a Yes event, a No event, and a Cancel event
-	public void Choice(string dialog, Sprite iconImage, UnityAction yesEvent, UnityAction noEvent, UnityAction cancelEvent) {
+	public void Choice(string dialog, Sprite iconImage, UnityAction yesEvent, UnityAction noEvent, UnityAction killEvent) {
 		modalPanelObject.SetActive(true);
 
 		yesButton.onClick.RemoveAllListeners();
@@ -124,9 +148,9 @@ public class ModalPanel : MonoBehaviour {
 		noButton.onClick.AddListener(noEvent);
 		noButton.onClick.AddListener(ClosePanel);
 
-		cancelButton.onClick.RemoveAllListeners();
-		cancelButton.onClick.AddListener(cancelEvent);
-		cancelButton.onClick.AddListener(ClosePanel);
+		killButton.onClick.RemoveAllListeners();
+		killButton.onClick.AddListener(killEvent);
+		killButton.onClick.AddListener(ClosePanel);
 
 		this.dialog.text = dialog;
 		this.iconImage.sprite = iconImage;
@@ -135,7 +159,7 @@ public class ModalPanel : MonoBehaviour {
 		okButton.gameObject.SetActive(false);
 		yesButton.gameObject.SetActive(true);
 		noButton.gameObject.SetActive(true);
-		cancelButton.gameObject.SetActive(true);
+		killButton.gameObject.SetActive(true);
 	}
 
 }
