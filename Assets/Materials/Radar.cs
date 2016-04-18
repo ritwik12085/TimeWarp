@@ -7,9 +7,11 @@ public class Radar : MonoBehaviour {
 	public GameObject[] trackedObjects;
 	List<GameObject> radarObjects;
 	public GameObject radarPrefab;
+	public GameObject twPrefab;
 	List<GameObject> borderObjects;
 	public float switchDistance;
 	public Transform helpTransform;
+	public GameObject tm;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,18 @@ public class Radar : MonoBehaviour {
 			}
 
 		}
+
+		if (Vector3.Distance (tm.transform.position, transform.position) > switchDistance) {
+			//switch to borderObjetcs
+			helpTransform.LookAt(tm.transform);
+			borderObjects [radarObjects.Count].transform.position = transform.position + switchDistance * helpTransform.forward;
+			borderObjects [radarObjects.Count].layer = LayerMask.NameToLayer ("Radar");
+			tm.layer = LayerMask.NameToLayer ("Invisible");
+		} else {
+			//switch back to radarObjects
+			borderObjects [radarObjects.Count].layer = LayerMask.NameToLayer ("Invisible");
+			tm.layer = LayerMask.NameToLayer ("Radar");
+		}
 	}
 
 	void createRadarObjects(){
@@ -43,6 +57,8 @@ public class Radar : MonoBehaviour {
 			GameObject j = Instantiate (radarPrefab, o.transform.position, Quaternion.identity) as GameObject;
 			borderObjects.Add (j);
 		}
+		GameObject l = Instantiate (twPrefab, tm.transform.position, Quaternion.identity) as GameObject;
+		borderObjects.Add (l);
 	}
 
 }
