@@ -9,7 +9,7 @@ public class Reputation : MonoBehaviour {
         reputation = 50;
 	}
     void Update(){
-        if (reputation <= 60){
+        if (reputation <= 50){
             repStatus = 0;
         }
         else if(reputation <= 100){
