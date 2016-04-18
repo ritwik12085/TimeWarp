@@ -36,7 +36,8 @@ public class Stats : MonoBehaviour {
 				this.gameObject.SetActive (false);
 			} 
 			else {
-				Debug.Log ("Game Over");
+				//Debug.Log ("Game Over");
+				Application.LoadLevel("GameOver");
 			}
 		}
         if(HP > MaxHP)
