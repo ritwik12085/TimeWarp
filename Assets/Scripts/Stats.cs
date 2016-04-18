@@ -25,7 +25,8 @@ public class Stats : MonoBehaviour {
 	private float critRangeHigh;
 	private float critChance;
 	private float AttackRange;
-	void Start(){
+    public Equipment equip;
+    void Start(){
 		MaxHP = CurrHP;
 		UpdateStats (0,0,0,0,0,0,0,0,0);
 	}
@@ -101,8 +102,17 @@ public class Stats : MonoBehaviour {
 	public float getMaxHP(){
 		return this.MaxHP;
 	}
+    public void equipUpdate()
+    {
+        float equipHP = equip.armorEquipSlot.theItem.hp + equip.weaponEquipSlot.theItem.hp + equip.headEquipSlot.theItem.hp + equip.feetEquipSlot.theItem.hp;
+        float equipAttack = equip.armorEquipSlot.theItem.attack + equip.weaponEquipSlot.theItem.attack + equip.headEquipSlot.theItem.attack + equip.feetEquipSlot.theItem.attack;
+        float equipDefense = equip.armorEquipSlot.theItem.defense + equip.weaponEquipSlot.theItem.defense + equip.headEquipSlot.theItem.defense + equip.feetEquipSlot.theItem.defense;
+        float equipAccuracy = equip.armorEquipSlot.theItem.accuracy + equip.weaponEquipSlot.theItem.accuracy + equip.headEquipSlot.theItem.accuracy + equip.feetEquipSlot.theItem.accuracy;
+        float equipAttackSpeed = equip.armorEquipSlot.theItem.atkSpeed + equip.weaponEquipSlot.theItem.atkSpeed + equip.headEquipSlot.theItem.atkSpeed + equip.feetEquipSlot.theItem.atkSpeed;
+        float equipAttackRange = equip.armorEquipSlot.theItem.atkRange + equip.weaponEquipSlot.theItem.atkRange + equip.headEquipSlot.theItem.atkRange + equip.feetEquipSlot.theItem.atkRange;
+        float equipDamage = equip.armorEquipSlot.theItem.critDamage + equip.weaponEquipSlot.theItem.critDamage + equip.headEquipSlot.theItem.critDamage + equip.feetEquipSlot.theItem.critDamage;
+        float equipCritChance = equip.armorEquipSlot.theItem.critChance + equip.weaponEquipSlot.theItem.critChance + equip.headEquipSlot.theItem.critChance + equip.feetEquipSlot.theItem.critChance;
 
-	public void updateTheStats(EquipmentItem theItem){
-		UpdateStats(theItem.hp, theItem.defense, theItem.attack, theItem.accuracy, theItem.atkSpeed, theItem.critDamage, theItem.critDamage, theItem.critChance, theItem.atkRange);
-	}
+        UpdateStats(equipHP, equipDefense, equipAttack, equipAccuracy, equipAttackSpeed, equipDamage, equipDamage, equipCritChance, equipAttackRange);
+    }
 }

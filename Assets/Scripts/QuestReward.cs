@@ -28,6 +28,10 @@ public class QuestReward : MonoBehaviour {
         }
         else
         {
+            if (ActiveQuest)
+            {
+                inv.questItem = item;
+            }
             collectQuest();
         }
     }
