@@ -15,7 +15,7 @@ public class Attack : MonoBehaviour {
     private Healing heal;
     void Start(){
 		vision = this.GetComponent<VisionCone> ();
-		player = vision.player;
+		player = GameObject.FindWithTag("Player");
 		nextAttack = 0.0f;
         heal = player.GetComponent<Healing>();
 	}
