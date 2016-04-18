@@ -38,10 +38,15 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	private bool shipPart1Hammer;
 	private bool shipPart1Fire;
 
+	public Image bottleImage;
+	public Image swordImage;
+
+
 	// Use this for initialization
 	void Start () {
 		
 	}
+		
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,22 +55,22 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 			if (!stmp.IsEmpty) {
 				if (stmp.CurrentItem.type == ItemType.VINE /*&& stmp.Items.Count > 0*/) {
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						bottleVines = true;
 					} else {
 						bottleVines = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						helmetVines = true;
 					} else {
 						helmetVines = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						bootVines = true;
 					} else {
 						bootVines = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						armorVines = true;
 					} else {
 						armorVines = false;
@@ -76,38 +81,38 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 					} else {
 						bottleWood = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						swordWood = true;
 					} else {
 						swordWood = false;
 					}
-					if (stmp.Items.Count >= 15) {
+					if (stmp.Items.Count >= 1) {
 						hammerWood = true;
 					} else {
 						hammerWood = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						bootWood = true;
 					} else {
 						bootWood = false;
 					}
 				} else if (stmp.CurrentItem.type == ItemType.STONE /*&& stmp.Items.Count > 0*/) {
-					if (stmp.Items.Count >= 10) {
+					if (stmp.Items.Count >= 1) {
 						swordStone = true;
 					} else {
 						swordStone = false;
 					}
-					if (stmp.Items.Count >= 15) {
+					if (stmp.Items.Count >= 1) {
 						hammerStone = true;
 					} else {
 						hammerStone = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						helmetStone = true;
 					} else {
 						helmetStone = false;
 					}
-					if (stmp.Items.Count >= 5) {
+					if (stmp.Items.Count >= 1) {
 						armorStone = true;
 					} else {
 						armorStone = false;
@@ -118,12 +123,12 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 					} else {
 						swordFire = false;
 					}
-					if (stmp.Items.Count >= 2) {
+					if (stmp.Items.Count >= 1) {
 						hammerFire = true;
 					} else {
 						hammerFire = false;
 					}
-					if (stmp.Items.Count >= 2) {
+					if (stmp.Items.Count >= 1) {
 						helmetFire = true;
 					} else {
 						helmetFire = false;
@@ -133,7 +138,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 					} else {
 						armorFire = false;
 					}
-					if (stmp.Items.Count >= 3) {
+					if (stmp.Items.Count >= 1) {
 						shipPart1Fire = true;
 					} else {
 						shipPart1Fire = false;
@@ -151,7 +156,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						shipPart1Helmet = false;
 					}
 				} else if (stmp.CurrentItem.type == ItemType.HAMMER /*&& stmp.Items.Count > 0*/) {
-					if (stmp.Items.Count >= 2) {
+					if (stmp.Items.Count >= 1) {
 						shipPart1Hammer = true;
 					} else {
 						shipPart1Hammer = false;
@@ -215,7 +220,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	private void Craft(){
 		if (craftItems.ctype == CraftType.BOTTLE && bottleVines == true && bottleWood == true) {
 			//take out used materials
-			int vineToTake = 5;
+			int vineToTake = 1;
 			int woodToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
@@ -224,9 +229,17 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
 							ttmp.decreaseFromCraft(vineToTake);
 							bottleVines = false;
+							helmetVines = false;
+							bootVines = false;
+							armorVines = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
 							bottleWood = false;
+							swordWood = false;
+							hammerWood = false;
+							bootWood = false;
+
 						}
 					}
 					if (bottleVines == false || bottleWood == false) {
@@ -245,12 +258,14 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newBottle.description = "A bottle you can use to hold water.";
 			newBottle.quality = Quality.QUESTITEM;
 			theBag.AddItem(newBottle);
+
+
 		}
 
 		if (craftItems.ctype == CraftType.SWORD && swordWood == true && swordFire == true && swordStone == true) {
 			//take out used materials
-			int stoneToTake = 10;
-			int woodToTake = 5;
+			int stoneToTake = 1;
+			int woodToTake = 1;
 			int fireToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
@@ -259,12 +274,25 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
 							ttmp.decreaseFromCraft(stoneToTake);
 							swordStone = false;
+							hammerStone = false;
+							helmetStone = false;
+							armorStone = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
 							swordWood = false;
+							bottleWood = false;
+							hammerWood = false;
+							bootWood = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
 							ttmp.decreaseFromCraft(fireToTake);
 							swordFire = false;
+							helmetFire = false;
+							hammerFire = false;
+							armorFire = false;
+							shipPart1Fire = false;
+
 						}
 					}
 					if (swordStone == false || swordWood == false || swordFire == false) {
@@ -292,9 +320,9 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 		if (craftItems.ctype == CraftType.HAMMER && hammerWood == true && hammerFire == true && hammerStone == true) {
 			//take out used materials
-			int stoneToTake = 15;
-			int woodToTake = 15;
-			int fireToTake = 2;
+			int stoneToTake = 1;
+			int woodToTake = 1;
+			int fireToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
@@ -302,12 +330,28 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
 							ttmp.decreaseFromCraft(stoneToTake);
 							hammerStone = false;
+							swordStone = false;
+							//hammerStone = false;
+							helmetStone = false;
+							armorStone = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
 							hammerWood = false;
+							swordWood = false;
+							bottleWood = false;
+							//hammerWood = false;
+							bootWood = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
 							ttmp.decreaseFromCraft(fireToTake);
 							hammerFire = false;
+							helmetFire = false;
+							swordFire = false;
+							//hammerFire = false;
+							armorFire = false;
+							shipPart1Fire = false;
+
 						}
 					}
 					if (hammerStone == false || hammerWood == false || hammerFire == false) {
@@ -335,9 +379,9 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 		if (craftItems.ctype == CraftType.HELMET && helmetVines == true && helmetFire == true && helmetStone == true) {
 			//take out used materials
-			int stoneToTake = 5;
-			int vineToTake = 5;
-			int fireToTake = 2;
+			int stoneToTake = 1;
+			int vineToTake = 1;
+			int fireToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
@@ -345,12 +389,26 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
 							ttmp.decreaseFromCraft(stoneToTake);
 							helmetStone = false;
+							swordStone = false;
+							hammerStone = false;
+							//helmetStone = false;
+							armorStone = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
 							ttmp.decreaseFromCraft(vineToTake);
 							helmetVines = false;
+							bottleVines = false;
+							bootVines = false;
+							armorVines = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
 							ttmp.decreaseFromCraft(fireToTake);
 							helmetFire = false;
+							hammerFire = false;
+							swordFire = false;
+							armorFire = false;
+							shipPart1Fire = false;
+
 						}
 					}
 					if (helmetStone == false || helmetVines == false || helmetFire == false) {
@@ -375,8 +433,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 		if (craftItems.ctype == CraftType.BOOT && bootVines == true && bootWater == true && bootWood == true) {
 			//take out used materials
-			int woodToTake = 5;
-			int vineToTake = 5;
+			int woodToTake = 1;
+			int vineToTake = 1;
 			int waterToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
@@ -385,12 +443,21 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
 							bootWood = false;
+							hammerWood = false;
+							swordWood = false;
+							bottleWood = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
 							ttmp.decreaseFromCraft(vineToTake);
+							helmetVines = false;
+							bottleVines = false;
 							bootVines = false;
+							armorVines = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.WATER && ttmp.Items.Count >= waterToTake) {
 							ttmp.decreaseFromCraft(waterToTake);
 							bootWater = false;
+
 						}
 					}
 					if (bootWood == false || bootVines == false || bootWater == false) {
@@ -415,8 +482,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 
 		if (craftItems.ctype == CraftType.ARMOR && armorVines == true && armorFire == true && armorStone == true) {
 			//take out used materials
-			int stoneToTake = 5;
-			int vineToTake = 5;
+			int stoneToTake = 1;
+			int vineToTake = 1;
 			int fireToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
@@ -425,12 +492,25 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
 							ttmp.decreaseFromCraft(stoneToTake);
 							armorStone = false;
+							helmetStone = false;
+							swordStone = false;
+							hammerStone = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
-							ttmp.decreaseFromCraft(vineToTake);
+							ttmp.decreaseFromCraft (vineToTake);
+							helmetVines = false;
+							bottleVines = false;
+							bootVines = false;
 							armorVines = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
 							ttmp.decreaseFromCraft(fireToTake);
 							armorFire = false;
+							helmetFire = false;
+							hammerFire = false;
+							swordFire = false;
+							shipPart1Fire = false;
+
 						}
 					}
 					if (armorStone == false || armorVines == false || armorFire == false) {
@@ -456,8 +536,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 		if (craftItems.ctype == CraftType.SHIPPART1 && shipPart1Fire == true && shipPart1Hammer == true && shipPart1Helmet == true) {
 			//take out used materials
 			int helmetToTake = 1;
-			int hammerToTake = 2;
-			int fireToTake = 3;
+			int hammerToTake = 1;
+			int fireToTake = 1;
 			if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
@@ -465,12 +545,19 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 						if (ttmp.CurrentItem.type == ItemType.HELMET && ttmp.Items.Count >= helmetToTake) {
 							ttmp.decreaseFromCraft(helmetToTake);
 							shipPart1Helmet = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.HAMMER && ttmp.Items.Count >= hammerToTake) {
 							ttmp.decreaseFromCraft(hammerToTake);
 							shipPart1Hammer = false;
+
 						} else if (ttmp.CurrentItem.type == ItemType.FIRE && ttmp.Items.Count >= fireToTake) {
 							ttmp.decreaseFromCraft(fireToTake);
 							shipPart1Fire = false;
+							armorFire = false;
+							helmetFire = false;
+							hammerFire = false;
+							swordFire = false;
+
 						}
 					}
 					if (shipPart1Fire == false || shipPart1Hammer == false || shipPart1Helmet == false) {
@@ -490,6 +577,8 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			newShipPart1.quality = Quality.FORSHIP;
 			theBag.AddItem(newShipPart1);
 		}
+
+
 	}
 
 	public void OnPointerClick(PointerEventData eventData){

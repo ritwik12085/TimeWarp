@@ -92,6 +92,11 @@ public class EquipSlot : MonoBehaviour {
 		theItem.accuracy = -0.2f;
 		theItem.critDamage = 0.1f;
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
+
+		GameObject thePlayer = GameObject.FindWithTag ("Player");
+
+		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
+		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
 	}
 
 	public void EquipHelmet(){
@@ -103,6 +108,11 @@ public class EquipSlot : MonoBehaviour {
 		theItem.defense = 10f;
 		theItem.hp = 10f;
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
+
+		GameObject thePlayer = GameObject.FindWithTag ("Player");
+
+		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
+		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
 	}
 
 	public void EquipArmor(){
@@ -114,6 +124,11 @@ public class EquipSlot : MonoBehaviour {
 		theItem.defense = 15f;
 		theItem.hp = 20f;
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
+
+		GameObject thePlayer = GameObject.FindWithTag ("Player");
+
+		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
+		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
 	}
 
 	public void EquipBoots(){
@@ -125,6 +140,11 @@ public class EquipSlot : MonoBehaviour {
 		theItem.defense = 5f;
 		theItem.hp = 5f;
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
+
+		GameObject thePlayer = GameObject.FindWithTag ("Player");
+
+		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
+		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
 	}
 
 	/*private void updateStatWindow(){
