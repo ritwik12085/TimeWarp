@@ -91,6 +91,11 @@ public class Movement : MonoBehaviour
 			target = transform.position;
 			animator.SetInteger ("Direction", 4);
 		}
+		/*if (coll.gameObject.tag == "Time Machine") {
+			target = transform.position;
+			animator.SetInteger ("Direction", 4);
+
+		}*/
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -99,4 +104,5 @@ public class Movement : MonoBehaviour
 			inventory.AddItem (other.GetComponent<Item> ());
 		}
 	}
+		
 }
