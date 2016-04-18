@@ -79,12 +79,17 @@ public class NPCController_Dave : MonoBehaviour {
 
 	void Talk() {
 		movementScript.SetTarget(player.transform.position);
+
         if (QuestDone)
         {
             modalPanel.Choice("Thanks for helping me out!");
         }
         else if (quest.questID == 0 || quest.questID == questID) 
         {
+			if (questType == "Collect Quest") {
+				//questComplete = true;
+				this.GetComponent<QuestReward> ().collectQuest ();
+			}
             if (!questComplete && !questInProgress)
             {
                 if (questType == "Kill Quest")
@@ -121,6 +126,20 @@ public class NPCController_Dave : MonoBehaviour {
                     quest.QuestComplete = questComplete;
                     quest.questID = 0;
                     quest.count = 0;
+
+					/*Item newBoot = gameObject.AddComponent<Item> ();
+					newBoot.type = ItemType.BOOT;
+					newBoot.spriteNeutral = bootNeutral;
+					newBoot.spriteHighlighted = bootHighlight;
+					newBoot.maxSize = 99;
+					newBoot.itemName = "Pair of Boots";
+					newBoot.description = "Well you can't go barefoot, right?";
+					newBoot.defense = 5f;
+					newBoot.hp = 5f;
+					newBoot.quality = Quality.COMMON;
+					//this.GetComponent<QuestReward> ().giveReward (newBoot);
+					QuestReward Areward = this.GetComponent<QuestReward>();
+					Areward.giveReward (newBoot);*/
                 }
                 else
                 {

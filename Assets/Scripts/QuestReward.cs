@@ -37,7 +37,7 @@ public class QuestReward : MonoBehaviour {
             {
                 inv.questItem = item;
             }
-            collectQuest();
+            //collectQuest();
         }
     }
     void killQuest()
@@ -54,7 +54,7 @@ public class QuestReward : MonoBehaviour {
             }
         }
     }
-    void collectQuest()
+    public void collectQuest()
     {
         if(type == "Collect Quest")
         {
@@ -64,4 +64,8 @@ public class QuestReward : MonoBehaviour {
             }
         }
     }
+
+	/*public void giveReward(Item reward){
+		inv.AddItem (reward);
+	}*/
 }

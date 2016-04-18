@@ -259,6 +259,9 @@ public class Inventory : MonoBehaviour {
                 if (stmp.CurrentItem.type == questItem)
                 {
                     quest.count = stmp.Items.Count;
+					if (quest.goal == quest.count) {
+						stmp.decreaseFromCraft (quest.goal);
+					}
                 }
             }
         }
