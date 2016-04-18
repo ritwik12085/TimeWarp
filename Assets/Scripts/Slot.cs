@@ -33,10 +33,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		get {  return items.Peek ();}
 	}
 
-	public Equipment equipment;
+	private Equipment equipment;
 
 	// Use this for initialization
 	void Start () {
+		equipment = GameObject.FindWithTag ("Equipment").GetComponent<Equipment> ();
+
 		items = new Stack<Item> ();
 		RectTransform slotRect = GetComponent<RectTransform> ();
 		RectTransform txtRect = stackTxt.GetComponent<RectTransform> ();

@@ -23,12 +23,25 @@ public class EquipSlot : MonoBehaviour {
 	void Start () {
 		//player = GameObject.FindWithTag ("Player");
 
-
+		theItem.etype = EquipType.EMPTY;
+		theItem.spriteNeutral = slotNeutral;
+		theItem.spriteHighlighted = slotHighlight;
+		theItem.itemName = "";
+		theItem.description = "";
+		theItem.hp = 0f;
+		theItem.attack = 0f;
+		theItem.defense = 0f;
+		theItem.atkSpeed = 0f;
+		theItem.atkRange = 0f;
+		theItem.accuracy = 0f;
+		theItem.critDamage = 0f;
+		theItem.critChance = 0f;
+		GetComponent<Image> ().sprite = theItem.spriteNeutral;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (theItem.etype == EquipType.EMPTY) {
+		/*if (theItem.etype == EquipType.EMPTY) {
 			theItem.etype = EquipType.EMPTY;
 			theItem.spriteNeutral = slotNeutral;
 			theItem.spriteHighlighted = slotHighlight;
@@ -43,7 +56,7 @@ public class EquipSlot : MonoBehaviour {
 			theItem.critDamage = 0f;
 			theItem.critChance = 0f;
 			GetComponent<Image> ().sprite = theItem.spriteNeutral;
-		}
+		}*/
 	}
 
 	public void EquipSword(){

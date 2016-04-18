@@ -22,7 +22,7 @@ public class Equipment : MonoBehaviour {
 	public Sprite bootNeutral;
 	public Sprite bootHighlight;
 
-	public Stats theStats;
+	//public Stats theStats;
 
 	// Use this for initialization
 	void Start () {
