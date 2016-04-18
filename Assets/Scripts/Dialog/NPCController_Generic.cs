@@ -11,7 +11,7 @@ public class NPCController_Generic : MonoBehaviour {
 
 	// public DialogController dialogController;
 	public TextAsset textFile;
-	public float minimumDistance;
+	private float minimumDistance;
 
 	private ModalPanel modalPanel;
 	private string[] dialogLines;
@@ -21,6 +21,7 @@ public class NPCController_Generic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
+		minimumDistance = 15;
 		// Make sure there this a text file assigned before continuing
 		if (textFile != null) {
 			// Add each line of the text file to the array using the new line as the delimiter
@@ -58,6 +59,16 @@ public class NPCController_Generic : MonoBehaviour {
 
 	void Talk() {
 		movementScript.SetTarget(player.transform.position);
-		modalPanel.Choice(dialogLines[Random.Range(0, dialogLines.Length)]);
+		modalPanel.Choice(dialogLines[Random.Range(0, dialogLines.Length)], emptyMethod, KillNPC, 1);
+	}
+
+	void emptyMethod(){
+
+	}
+
+	void KillNPC(){
+		this.gameObject.SetActive (false);
+		player.GetComponent<Reputation> ().subRep (200);
+		//Debug.Log (player.GetComponent<Reputation>().reputation);
 	}
 }

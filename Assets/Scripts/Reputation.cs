@@ -9,14 +9,14 @@ public class Reputation : MonoBehaviour {
         reputation = 50;
 	}
     void Update(){
-        if (reputation <= 33){
+        if (reputation <= 70){
             repStatus = 0;
         }
-        else if (reputation <= 66){
+        /*else if (reputation <= 66){
             repStatus = 1;
-        }
+        }*/
         else if(reputation <= 100){
-            repStatus = 2;
+            repStatus = 1;
         }
         if(reputation > 100)
         {
@@ -28,6 +28,7 @@ public class Reputation : MonoBehaviour {
     }
     public void subRep(int rep){
         reputation -= rep;
+		Debug.Log (reputation);
     }
     public int getRepStatus(){
         return repStatus;
