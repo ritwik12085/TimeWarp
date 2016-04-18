@@ -74,11 +74,9 @@ public class EquipSlot : MonoBehaviour {
 
 		//updateStatWindow ();
 		GameObject thePlayer = GameObject.FindWithTag ("Player");
+        thePlayer.GetComponent<Stats>().equipUpdate();
 
-		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
-		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
-
-	}
+    }
 
 	public void EquipHammer(){
 		theItem.etype = EquipType.HAMMER;
@@ -94,9 +92,7 @@ public class EquipSlot : MonoBehaviour {
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
 
 		GameObject thePlayer = GameObject.FindWithTag ("Player");
-
-		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
-		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
+		thePlayer.GetComponent<Stats>().equipUpdate();
 	}
 
 	public void EquipHelmet(){
@@ -110,10 +106,8 @@ public class EquipSlot : MonoBehaviour {
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
 
 		GameObject thePlayer = GameObject.FindWithTag ("Player");
-
-		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
-		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
-	}
+        thePlayer.GetComponent<Stats>().equipUpdate();
+    }
 
 	public void EquipArmor(){
 		theItem.etype = EquipType.ARMOR;
@@ -126,10 +120,8 @@ public class EquipSlot : MonoBehaviour {
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
 
 		GameObject thePlayer = GameObject.FindWithTag ("Player");
-
-		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
-		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
-	}
+        thePlayer.GetComponent<Stats>().equipUpdate();
+    }
 
 	public void EquipBoots(){
 		theItem.etype = EquipType.BOOT;
@@ -142,10 +134,8 @@ public class EquipSlot : MonoBehaviour {
 		GetComponent<Image> ().sprite = theItem.spriteNeutral;
 
 		GameObject thePlayer = GameObject.FindWithTag ("Player");
-
-		Debug.Log (thePlayer.GetComponent<Stats>().getHP());
-		thePlayer.GetComponent<Stats>().updateTheStats(theItem);
-	}
+        thePlayer.GetComponent<Stats>().equipUpdate();
+    }
 
 	/*private void updateStatWindow(){
 		GameObject thePlayer = GameObject.FindWithTag ("Player");

@@ -97,6 +97,7 @@ public class Movement : MonoBehaviour
 	{
 		if (other.tag == "Item") {
 			inventory.AddItem (other.GetComponent<Item> ());
+            other.gameObject.SetActive(false);
 		}
 	}
 }
