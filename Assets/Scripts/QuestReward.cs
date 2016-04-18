@@ -14,6 +14,11 @@ public class QuestReward : MonoBehaviour {
     void Start () {
         type = "";
         dead = false;
+        quest = GameObject.FindWithTag("Player").GetComponent<QuestTracker>();
+        if(this.tag == "Enemy")
+        {
+            me = this.GetComponentInChildren<Stats>().gameObject;
+        }
 	}
 	
 	// Update is called once per frame

@@ -9,12 +9,9 @@ public class Reputation : MonoBehaviour {
         reputation = 50;
 	}
     void Update(){
-        if (reputation <= 70){
+        if (reputation <= 60){
             repStatus = 0;
         }
-        /*else if (reputation <= 66){
-            repStatus = 1;
-        }*/
         else if(reputation <= 100){
             repStatus = 1;
         }
@@ -28,7 +25,6 @@ public class Reputation : MonoBehaviour {
     }
     public void subRep(int rep){
         reputation -= rep;
-		Debug.Log (reputation);
     }
     public int getRepStatus(){
         return repStatus;

@@ -4,11 +4,12 @@ using System.Collections;
 public class MonsterRep : MonoBehaviour {
 
     public int repPoints;
-    public Reputation reputation;
+    private Reputation reputation;
     public GameObject me;
     private bool updated;
     void Start()
     {
+        reputation = GameObject.FindWithTag("Player").GetComponent<Reputation>();
         updated = false;
     }
 	void Update () {
