@@ -13,6 +13,10 @@ public class VisionCone : MonoBehaviour {
 	private Boolean canAttack;
 	private Vector3 direction;
     private float HP;
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
 	void Update() {
 		Vector3 targetDir = player.transform.position - transform.position;
         if(player.GetComponent<PlayerAttack> ().getEnemyClicked() && (Vector3.Distance(this.transform.position, player.transform.position) < player.GetComponent<Stats>().getAttackRange()) ){
