@@ -91,10 +91,10 @@ public class Movement : MonoBehaviour
 			target = transform.position;
 			animator.SetInteger ("Direction", 4);
 		}
-		/*if (coll.gameObject.tag == "Time Machine") {
+		/*if (coll.gameObject.tag == "Lake") {
 			target = transform.position;
 			animator.SetInteger ("Direction", 4);
-
+			inventory.AddItem (coll.GetComponent<Item> ());
 		}*/
 	}
 
@@ -103,6 +103,9 @@ public class Movement : MonoBehaviour
 		if (other.tag == "Item") {
 			inventory.AddItem (other.GetComponent<Item> ());
             other.gameObject.SetActive(false);
+		}
+		if (other.tag == "Lake") {
+			inventory.AddItem (other.GetComponent<Item> ());
 		}
 	}
 		

@@ -30,7 +30,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 	private bool helmetVines;
 	private bool bootVines;
 	private bool bootWood;
-	private bool bootWater;
+	private bool bootStone;
 	private bool armorVines;
 	private bool armorStone;
 	private bool armorFire;
@@ -131,6 +131,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 					} else {
 						armorStone = false;
 					}
+					if (stmp.Items.Count >= 1) {
+						bootStone = true;
+					} else {
+						bootStone = false;
+					}
 				} else if (stmp.CurrentItem.type == ItemType.FIRE /*&& stmp.Items.Count > 0*/) {
 					if (stmp.Items.Count >= 1) {
 						swordFire = true;
@@ -157,18 +162,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 					} else {
 						shipPart1Fire = false;
 					}
-				} else if (stmp.CurrentItem.type == ItemType.WATER /*&& stmp.Items.Count > 0*/) {
-					if (stmp.Items.Count >= 1) {
-						bootWater = true;
-					} else {
-						bootWater = false;
-					}
-					/*if (stmp.Items.Count >= 1) {
-						shipPart1Water = true;
-					} else {
-						shipPart1Water = false;
-					}*/
-				} else if (stmp.CurrentItem.type == ItemType.BOTTLE ) {
+				}  else if (stmp.CurrentItem.type == ItemType.BOTTLE ) {
 					if (stmp.Items.Count >= 1) {
 						shipPart1Bottle = true;
 					} else {
@@ -307,6 +301,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 							hammerStone = false;
 							helmetStone = false;
 							armorStone = false;
+						bootStone = false;
 
 						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
@@ -367,6 +362,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 							//hammerStone = false;
 							helmetStone = false;
 							armorStone = false;
+						bootStone = false;
 
 						} else if (ttmp.CurrentItem.type == ItemType.WOOD && ttmp.Items.Count >= woodToTake) {
 							ttmp.decreaseFromCraft(woodToTake);
@@ -426,6 +422,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 							hammerStone = false;
 							//helmetStone = false;
 							armorStone = false;
+						bootStone = false;
 
 						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
 							ttmp.decreaseFromCraft(vineToTake);
@@ -465,11 +462,11 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 			theBag.AddItem(newHelmet);
 		}
 
-		if (craftItems.ctype == CraftType.BOOT && bootVines == true && bootWater == true && bootWood == true) {
+		if (craftItems.ctype == CraftType.BOOT && bootVines == true && bootStone == true && bootWood == true) {
 			//take out used materials
 			int woodToTake = 1;
 			int vineToTake = 1;
-			int waterToTake = 1;
+			int stoneToTake = 1;
 			//if (GetComponent<Image> ().color == Color.white) {
 				foreach (GameObject slot in theBag.AllSlots) {
 					Slot ttmp = slot.GetComponent<Slot> ();
@@ -489,9 +486,14 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 							armorVines = false;
 						shipPart1Vines = false;
 
-						} else if (ttmp.CurrentItem.type == ItemType.WATER && ttmp.Items.Count >= waterToTake) {
-							ttmp.decreaseFromCraft(waterToTake);
-							bootWater = false;
+						} else if (ttmp.CurrentItem.type == ItemType.STONE && ttmp.Items.Count >= stoneToTake) {
+							ttmp.decreaseFromCraft(stoneToTake);
+						helmetStone = false;
+						swordStone = false;
+						hammerStone = false;
+						//helmetStone = false;
+						armorStone = false;
+						bootStone = false;
 
 
 						}
@@ -531,6 +533,7 @@ public class CraftSlot : MonoBehaviour, IPointerClickHandler {
 							helmetStone = false;
 							swordStone = false;
 							hammerStone = false;
+						bootStone = false;
 
 						} else if (ttmp.CurrentItem.type == ItemType.VINE && ttmp.Items.Count >= vineToTake) {
 							ttmp.decreaseFromCraft (vineToTake);

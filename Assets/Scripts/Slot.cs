@@ -57,6 +57,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public void AddItem(Item item){
+
 		items.Push (item);
 
 		if (items.Count > 1) {
@@ -101,6 +102,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			if (CurrentItem.type == ItemType.BOOT) {
 				equipment.feetEquipSlot.EquipBoots ();
 			}
+				
 
 			items.Pop ().Use ();
 
