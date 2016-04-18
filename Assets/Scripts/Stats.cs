@@ -39,6 +39,11 @@ public class Stats : MonoBehaviour {
 				Debug.Log ("Game Over");
 			}
 		}
+        if(HP > MaxHP)
+        {
+            HP = MaxHP;
+            UpdateStats(0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
 	}
 	public void UpdateStats(float HP, float Defense, float Attack, float Accuracy, float AttackSpeed, float critRangeLow, float critRangeHigh, float critChance, float AttackRange){
 		this.HP = CurrHP + HP;

@@ -17,13 +17,19 @@ public class AIMovement : MonoBehaviour {
 		vision = this.GetComponent<VisionCone> ();
 		target = new Vector3 (0, 0, 0);
 		nextPath = Time.time;
-	}
+        player = GameObject.FindWithTag("Player");
+    }
 
 	void Update () {
 		float rand = Random.value;
 		if (!this.gameObject.GetComponent<Rigidbody2D> ().IsAwake ()) {
 			pos = this.transform.position;
 		}
+        if (player.GetComponent<PlayerAttack>().getEnemyClicked() && Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= player.GetComponent<Stats>().getAttackRange()) 
+        {
+            target = player.transform.position;
+            nextPath = Time.time + 2;
+        }
 		if(vision.getCanSee ()){
 			target = player.transform.position;
 			nextPath = Time.time + 2;
